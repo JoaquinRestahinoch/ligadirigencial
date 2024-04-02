@@ -13,6 +13,12 @@
             background-color: #f5f5f5;
             color: #333;
         }
+
+        th.total,
+        td.total {
+            background-color: #337ab7; /* Azul */
+            color: #fff;
+        }
         table {
             width: 90%;
             border-collapse: collapse;
@@ -48,6 +54,21 @@
             color: #666;
             font-size: 16px;
         }
+        /* Estilos para las celdas G (Goles) */
+        td.g {
+            background-color: #5cb85c; /* Verde */
+            color: #fff;
+        }
+        /* Estilos para las celdas E (Empates) */
+        td.e {
+            background-color: #f0ad4e; /* Amarillo */
+            color: #333;
+        }
+        /* Estilos para las celdas P (Perdidos) */
+        td.p {
+            background-color: #d9534f; /* Rojo */
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -67,18 +88,18 @@
             <th>G</th>
             <th>E</th>
             <th>P</th>
-            <th>Total</th>
+            <th class="total">Total</th>
             <th>%</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>RESTA</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="g">G</td>
+            <td class="g">G</td>
+            <td class="e">E</td>
+            <td class="g">G</td>
+            <td class="p">P</td>
             <td>5</td>
             <td>3</td>
             <td>1</td>
@@ -88,11 +109,11 @@
         </tr>
         <tr>
             <td>GALSTI</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="g">G</td>
+            <td class="g">G</td>
             <td></td>
             <td></td>
-            <td>X</td>
+            <td class="g">G</td>
             <td>3</td>
             <td>3</td>
             <td>0</td>
@@ -102,11 +123,11 @@
         </tr>
         <tr>
             <td>ANIKI</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="p">P</td>
+            <td class="g">G</td>
+            <td class="e">E</td>
             <td></td>
-            <td></td>
+            <td class="g">G</td>
             <td>4</td>
             <td>2</td>
             <td>1</td>
@@ -116,11 +137,11 @@
         </tr>
         <tr>
             <td>SASSO</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="g">G</td>
+            <td class="p">P</td>
+            <td class="e">E</td>
+            <td class="p">P</td>
+            <td class="g">G</td>
             <td>5</td>
             <td>2</td>
             <td>1</td>
@@ -130,11 +151,11 @@
         </tr>
         <tr>
             <td>WENDEL</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="g">G</td>
+            <td class="p">P</td>
+            <td class="e">E</td>
+            <td class="p">P</td>
+            <td class="g">G</td>
             <td>5</td>
             <td>2</td>
             <td>1</td>
@@ -144,11 +165,11 @@
         </tr>
         <tr>
             <td>MEXICANO</td>
-            <td>X</td>
+            <td class="p">P</td>
             <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="e">E</td>
+            <td class="g">G</td>
+            <td class="g">G</td>
             <td>4</td>
             <td>2</td>
             <td>1</td>
@@ -158,11 +179,11 @@
         </tr>
         <tr>
             <td>FEDE</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="g">G</td>
+            <td class="p">P</td>
+            <td class="e">E</td>
             <td></td>
-            <td></td>
+            <td class="p">P</td>
             <td>4</td>
             <td>1</td>
             <td>1</td>
@@ -172,11 +193,11 @@
         </tr>
         <tr>
             <td>TRAPA</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="p">P</td>
+            <td class="p">P</td>
+            <td class="e">E</td>
+            <td class="g">G</td>
+            <td class="p">P</td>
             <td>5</td>
             <td>1</td>
             <td>1</td>
@@ -187,9 +208,9 @@
         <tr>
             <td>COSTA</td>
             <td></td>
-            <td>X</td>
+            <td class="g">G</td>
             <td></td>
-            <td></td>
+            <td class="p">P</td>
             <td></td>
             <td>2</td>
             <td>1</td>
@@ -201,7 +222,7 @@
         <tr>
             <td>ROCCO</td>
             <td></td>
-            <td></td>
+            <td class="g">G</td>
             <td></td>
             <td></td>
             <td></td>
@@ -216,8 +237,8 @@
             <td>VALEN</td>
             <td></td>
             <td></td>
-            <td>X</td>
             <td></td>
+            <td class="g">G</td>
             <td></td>
             <td>1</td>
             <td>1</td>
@@ -230,8 +251,8 @@
             <td>MEXICANO 2</td>
             <td></td>
             <td></td>
-            <td>X</td>
             <td></td>
+            <td class="g">G</td>
             <td></td>
             <td>1</td>
             <td>1</td>
@@ -243,8 +264,8 @@
         <tr>
             <td>PEKE</td>
             <td></td>
-            <td>X</td>
             <td></td>
+            <td class="e">E</td>
             <td></td>
             <td></td>
             <td>1</td>
@@ -257,8 +278,8 @@
         <tr>
             <td>PIRU</td>
             <td></td>
-            <td>X</td>
             <td></td>
+            <td class="e">E</td>
             <td></td>
             <td></td>
             <td>1</td>
@@ -270,11 +291,11 @@
         </tr>
         <tr>
             <td>GIROUD</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
+            <td class="p">P</td>
+            <td class="p">P</td>
+            <td class="e">E</td>
+            <td class="p">P</td>
+            <td class="p">P</td>
             <td>5</td>
             <td>0</td>
             <td>1</td>
@@ -284,7 +305,7 @@
         </tr>
         <tr>
             <td>FAKE LEON</td>
-            <td>X</td>
+            <td class="p">P</td>
             <td></td>
             <td></td>
             <td></td>
@@ -300,8 +321,8 @@
             <td>LUCCA</td>
             <td></td>
             <td></td>
-            <td>X</td>
             <td></td>
+            <td class="p">P</td>
             <td></td>
             <td>1</td>
             <td>0</td>
@@ -315,8 +336,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>X</td>
             <td></td>
+            <td class="p">P</td>
             <td>1</td>
             <td>0</td>
             <td>0</td>
