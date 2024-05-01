@@ -69,6 +69,73 @@
             background-color: #d9534f; /* Rojo */
             color: #fff;
         }
+        /* Resaltado de nombres */
+        td[data-player="resta"],
+        td[data-player="wendel"],
+        td[data-player="mexicano"],
+        td[data-player="sasso"],
+        td[data-player="galsti"] {
+            background-color: #a0eb94; /* Verde claro */
+        }
+        td[data-player="valen"],
+        td[data-player="aniki"],
+        td[data-player="trapa"],
+        td[data-player="fede"] {
+            background-color: #ddff00; /* Amarillo claro */
+        }
+        td[data-player="tomy"],
+        td[data-player="santi"],
+        td[data-player="monti"],
+        td[data-player="fake"],
+        td[data-player="leon"],
+        td[data-player="giroud"] {
+            background-color: #f84c4c; /* Rojo claro */
+        }
+        td[data-player="peke"] {
+            background-color: #ffa041; /* Naranja */
+        }
+
+        /* Estilos para el pop-up */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            text-align: center;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #888;
+            font-size: 24px;
+        }
+        .close-btn:hover {
+            color: #555;
+        }
+        .popup-content p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .popup-content p:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -96,7 +163,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>RESTA</td>
+            <td data-player="resta">RESTA</td>
             <td class="g">G</td>
             <td class="g">G</td>
             <td class="e">E</td>
@@ -112,7 +179,7 @@
             <td>61.90%</td>
         </tr>
         <tr>
-            <td>WENDEL</td>
+            <td data-player="wendel">WENDEL</td>
             <td class="g">G</td>
             <td class="p">P</td>
             <td class="e">E</td>
@@ -128,7 +195,7 @@
             <td>61.90%</td>
         </tr>
         <tr>
-            <td>MEXICANO</td>
+            <td data-player="mexicano">MEXICANO</td>
             <td class="p">P</td>
             <td></td>
             <td class="e">E</td>
@@ -144,7 +211,7 @@
             <td>55.56%</td>
         </tr>
         <tr>
-            <td>SASSO</td>
+            <td data-player="sasso">SASSO</td>
             <td class="g">G</td>
             <td class="p">P</td>
             <td class="e">E</td>
@@ -160,7 +227,7 @@
             <td>47.62%</td>
         </tr>
         <tr>
-            <td>GALSTI</td>
+            <td data-player="galsti">GALSTI</td>
             <td class="g">G</td>
             <td class="g">G</td>
             <td></td>
@@ -177,7 +244,7 @@
         </tr>
 
         <tr>
-            <td>VALEN</td>
+            <td data-player="valen">VALEN</td>
             <td></td>
             <td></td>
             <td></td>
@@ -193,7 +260,7 @@
             <td>100.00%</td>
         </tr>
         <tr>
-            <td>ANIKI</td>
+            <td data-player="aniki">ANIKI</td>
             <td class="p">P</td>
             <td class="g">G</td>
             <td class="e">E</td>
@@ -209,7 +276,7 @@
             <td>58.33%</td>
         </tr>
         <tr>
-            <td>TRAPA</td>
+            <td data-player="trapa">TRAPA</td>
             <td class="p">P</td>
             <td class="p">P</td>
             <td class="e">E</td>
@@ -226,7 +293,7 @@
         </tr>
         
         <tr>
-            <td>FEDE</td>
+            <td data-player="fede">FEDE</td>
             <td class="g">G</td>
             <td class="p">P</td>
             <td class="e">E</td>
@@ -243,7 +310,7 @@
         </tr>
         
         <tr>
-            <td>PIRU</td>
+            <td data-player="piru">PIRU</td>
             <td></td>
             <td></td>
             <td class="e">E</td>
@@ -259,7 +326,7 @@
             <td>66.67%</td>
         </tr>
         <tr>
-            <td>COSTA</td>
+            <td data-player="costa">COSTA</td>
             <td></td>
             <td class="g">G</td>
             <td></td>
@@ -275,7 +342,7 @@
             <td>33.33%</td>
         </tr>
         <tr>
-            <td>ROCCO</td>
+            <td data-player="rocco">ROCCO</td>
             <td></td>
             <td class="g">G</td>
             <td></td>
@@ -291,7 +358,7 @@
             <td>100.00%</td>
         </tr>
         <tr>
-            <td>MEXICANO 2</td>
+            <td data-player="mexicano2">MEXICANO 2</td>
             <td></td>
             <td></td>
             <td></td>
@@ -307,7 +374,7 @@
             <td>100.00%</td>
         </tr>
         <tr>
-            <td>LUCCA</td>
+            <td data-player="lucca">LUCCA</td>
             <td></td>
             <td></td>
             <td></td>
@@ -323,7 +390,7 @@
             <td>33.33%</td>
         </tr>
         <tr>
-            <td>PEKE</td>
+            <td data-player="peke">PEKE</td>
             <td></td>
             <td></td>
             <td class="e">E</td>
@@ -339,7 +406,7 @@
             <td>33.33%</td>
         </tr>
         <tr>
-            <td>GIROUD</td>
+            <td data-player="giroud">GIROUD</td>
             <td class="p">P</td>
             <td class="p">P</td>
             <td class="e">E</td>
@@ -355,7 +422,7 @@
             <td>5.56%</td>
         </tr>
         <tr>
-            <td>FAKE LEON</td>
+            <td data-player="fake">FAKE LEON</td>
             <td class="p">P</td>
             <td></td>
             <td></td>
@@ -371,7 +438,7 @@
             <td>0.00%</td>
         </tr>
         <tr>
-            <td>MONTI</td>
+            <td data-player="monti">MONTI</td>
             <td></td>
             <td></td>
             <td></td>
@@ -387,7 +454,7 @@
             <td>0.00%</td>
         </tr>
         <tr>
-            <td>SANTI M</td>
+            <td data-player="santi">SANTI M</td>
             <td></td>
             <td></td>
             <td></td>
@@ -403,7 +470,7 @@
             <td>0.00%</td>
         </tr>
         <tr>
-            <td>TOMY A</td>
+            <td data-player="tomy">TOMY A</td>
             <td></td>
             <td></td>
             <td></td>
@@ -420,6 +487,32 @@
         </tr>
     </tbody>
 </table>
+<!-- Pop-up -->
+<div class="popup-container" id="popup-container">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">×</span>
+        <h3>¡Noticias de la Liga!</h3>
+        <p>¡Resta, Wendel, Chicha, Sasso y Galsti juegan en la Libertadores!</p>
+        <p>¡Valen, Aniki, Trapa y Fede están en la Sudamericana!</p>
+        <p>¡Peke está en la promoción!</p>
+        <p>¡Tomy, Santi, Monti, Fake y Leon se van al descenso!</p>
+    </div>
 
+<script>
+    // Función para abrir el pop-up
+    function openPopup() {
+        var popup = document.getElementById("popup-container");
+        popup.style.display = "block";
+    }
+
+    // Función para cerrar el pop-up
+    function closePopup() {
+        var popup = document.getElementById("popup-container");
+        popup.style.display = "none";
+    }
+
+    // Llamada a la función para abrir el pop-up cuando se carga la página
+    window.onload = openPopup;
+</script>
 </body>
 </html>
