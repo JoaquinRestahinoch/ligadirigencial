@@ -123,11 +123,14 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
-            color: #888;
-            font-size: 24px;
+            color: white;
+            background-color: #d9534f; /* Rojo */
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
         }
         .close-btn:hover {
-            color: #555;
+            background-color: #c9302c; /* Rojo oscuro */
         }
         .popup-content p {
             font-size: 18px;
@@ -490,12 +493,12 @@
 <!-- Pop-up -->
 <div class="popup-container" id="popup-container">
     <div class="popup-content">
-        <span class="close-btn" onclick="closePopup()">×</span>
-        <h3>¡Noticias de la Liga!</h3>
-        <p>¡Resta, Wendel, Chicha, Sasso y Galsti juegan en la Libertadores!</p>
-        <p>¡Valen, Aniki, Trapa y Fede están en la Sudamericana!</p>
-        <p>¡Peke está en la promoción!</p>
-        <p>¡Tomy, Santi, Monti, Fake y Leon se van al descenso!</p>
+        <button class="close-btn" onclick="closePopup()">Cerrar</button>
+        <h3>POSICIONES ACTUALES</h3>
+        <p>LIBERTADORES: Resta - Wendel - Chicha - Sasso - Galsti</p>
+        <p>SUDAMERICANA: Valen - Aniki - Trapa - Fede</p>
+        <p>PROMOCIÓN: Peke</p>
+        <p>DESCENSO: Tomy - Santi - Monti - Fake Leon - Giroud</p>
     </div>
 
 <script>
