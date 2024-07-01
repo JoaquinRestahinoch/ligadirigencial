@@ -3,519 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIGA DIRIGENCIAL - JORNADA 7/10 </title>
-    <meta property="og:image" content="https://img.a.transfermarkt.technology/portrait/big/82442-1661514565.jpg?lm=1" />
+    <title>Formulario de Convergencias y Paradigmas Tecnológicos</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
+            padding: 0;
         }
-
-        th.total,
-        td.total {
-            background-color: #337ab7; /* Azul */
-            color: #fff;
-        }
-        table {
-            width: 90%;
-            border-collapse: collapse;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 8px;
+        .container {
+            width: 80%;
+            margin: auto;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        th, td {
-            border: 1px solid #ddd;
+        header {
+            background: #50b3a2;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #2980b9 3px solid;
+        }
+        header h1 {
+            margin: 0;
             text-align: center;
-            padding: 10px;
-            font-size: 14px;
+            padding-bottom: 20px;
         }
-        th {
-            background-color: #f2f2f2;
+        form {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form h1 {
+            margin-bottom: 20px;
+            text-align: center;
             color: #333;
-            text-transform: uppercase;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #50b3a2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background: #3a8d84;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result p {
+            font-size: 18px;
             font-weight: bold;
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .correct {
+            color: green;
         }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 24px;
+        .incorrect {
+            color: red;
         }
-        p {
-            text-align: center;
-            color: #666;
-            font-size: 16px;
+        .question.correct label {
+            background-color: #d4edda;
         }
-        /* Estilos para las celdas G (Goles) */
-        td.g {
-            background-color: #5cb85c; /* Verde */
-            color: #fff;
-        }
-        /* Estilos para las celdas E (Empates) */
-        td.e {
-            background-color: #f0ad4e; /* Amarillo */
-            color: #333;
-        }
-        /* Estilos para las celdas P (Perdidos) */
-        td.p {
-            background-color: #d9534f; /* Rojo */
-            color: #fff;
-        }
-        /* Resaltado de nombres */
-        td[data-player="resta"],
-        td[data-player="wendel"],
-        td[data-player="mexicano"],
-        td[data-player="sasso"],
-        td[data-player="galsti"] {
-            background-color: #a0eb94; /* Verde claro */
-        }
-        td[data-player="valen"],
-        td[data-player="aniki"],
-        td[data-player="trapa"],
-        td[data-player="fede"] {
-            background-color: #ddff00; /* Amarillo claro */
-        }
-        td[data-player="tomy"],
-        td[data-player="santi"],
-        td[data-player="monti"],
-        td[data-player="fake"],
-        td[data-player="leon"],
-        td[data-player="giroud"] {
-            background-color: #f84c4c; /* Rojo claro */
-        }
-        td[data-player="peke"] {
-            background-color: #ffa041; /* Naranja */
-        }
-
-        /* Estilos para el pop-up */
-        .popup-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-        .popup-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            text-align: center;
-        }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            color: white;
-            background-color: #d9534f; /* Rojo */
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .close-btn:hover {
-            background-color: #c9302c; /* Rojo oscuro */
-        }
-        .popup-content p {
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-        .popup-content p:last-child {
-            margin-bottom: 0;
+        .question.incorrect label {
+            background-color: #f8d7da;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Formulario de Convergencias y Paradigmas Tecnológicos</h1>
+    </header>
 
-<h2>⚡ LIGA DIRIGENCIAL - JORNADA 7/10 ⚡</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>Jugador</th>
-            <th>Fecha 1</th>
-            <th>Fecha 2</th>
-            <th>Fecha 3</th>
-            <th>Fecha 4</th>
-            <th>Fecha 5</th>
-            <th>Fecha 6</th>
-            <th>Fecha 7</th>
-            <th>PJ</th>
-            <th>G</th>
-            <th>E</th>
-            <th>P</th>
-            <th class="total">Total</th>
-            <th>%</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td data-player="resta">RESTA</td>
-            <td class="g">G</td>
-            <td class="g">G</td>
-            <td class="e">E</td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td class="p">P</td>
-            <td class="g">G</td>
-            <td>7</td>
-            <td>4</td>
-            <td>1</td>
-            <td>2</td>
-            <td>13</td>
-            <td>61.90%</td>
-        </tr>
-        <tr>
-            <td data-player="wendel">WENDEL</td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td class="e">E</td>
-            <td class="p">P</td>
-            <td class="g">G</td>
-            <td class="g">G</td>
-            <td class="g">G</td>
-            <td>7</td>
-            <td>4</td>
-            <td>1</td>
-            <td>2</td>
-            <td>13</td>
-            <td>61.90%</td>
-        </tr>
-        <tr>
-            <td data-player="mexicano">MEXICANO</td>
-            <td class="p">P</td>
-            <td></td>
-            <td class="e">E</td>
-            <td class="g">G</td>
-            <td class="g">G</td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td>6</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>10</td>
-            <td>55.56%</td>
-        </tr>
-        <tr>
-            <td data-player="sasso">SASSO</td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td class="e">E</td>
-            <td class="p">P</td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td class="g">G</td>
-            <td>7</td>
-            <td>3</td>
-            <td>1</td>
-            <td>3</td>
-            <td>10</td>
-            <td>47.62%</td>
-        </tr>
-        <tr>
-            <td data-player="galsti">GALSTI</td>
-            <td class="g">G</td>
-            <td class="g">G</td>
-            <td></td>
-            <td></td>
-            <td class="g">G</td>
-            <td></td>
-            <td></td>
-            <td>3</td>
-            <td>3</td>
-            <td>0</td>
-            <td>0</td>
-            <td>9</td>
-            <td>100.00%</td>
-        </tr>
-
-        <tr>
-            <td data-player="valen">VALEN</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="g">G</td>
-            <td></td>
-            <td class="g">G</td>
-            <td class="g">G</td>
-            <td>3</td>
-            <td>3</td>
-            <td>0</td>
-            <td>0</td>
-            <td>9</td>
-            <td>100.00%</td>
-        </tr>
-        <tr>
-            <td data-player="aniki">ANIKI</td>
-            <td class="p">P</td>
-            <td class="g">G</td>
-            <td class="e">E</td>
-            <td></td>
-            <td class="g">G</td>
-            <td></td>
-            <td></td>
-            <td>4</td>
-            <td>2</td>
-            <td>1</td>
-            <td>1</td>
-            <td>7</td>
-            <td>58.33%</td>
-        </tr>
-        <tr>
-            <td data-player="trapa">TRAPA</td>
-            <td class="p">P</td>
-            <td class="p">P</td>
-            <td class="e">E</td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td class="p">P</td>
-            <td class="g">G</td>
-            <td>7</td>
-            <td>2</td>
-            <td>1</td>
-            <td>4</td>
-            <td>7</td>
-            <td>33.33%</td>
-        </tr>
-        
-        <tr>
-            <td data-player="fede">FEDE</td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td class="e">E</td>
-            <td></td>
-            <td class="p">P</td>
-            <td class="p">P</td>
-            <td></td>
-            <td>5</td>
-            <td>1</td>
-            <td>1</td>
-            <td>3</td>
-            <td>4</td>
-            <td>26.67%</td>
-        </tr>
-        
-        <tr>
-            <td data-player="piru">PIRU</td>
-            <td></td>
-            <td></td>
-            <td class="e">E</td>
-            <td></td>
-            <td></td>
-            <td class="g">G</td>
-            <td></td>
-            <td>2</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>4</td>
-            <td>66.67%</td>
-        </tr>
-        <tr>
-            <td data-player="costa">COSTA</td>
-            <td></td>
-            <td class="g">G</td>
-            <td></td>
-            <td class="p">P</td>
-            <td></td>
-            <td></td>
-            <td class="p">P</td>
-            <td>3</td>
-            <td>1</td>
-            <td>0</td>
-            <td>2</td>
-            <td>3</td>
-            <td>33.33%</td>
-        </tr>
-        <tr>
-            <td data-player="rocco">ROCCO</td>
-            <td></td>
-            <td class="g">G</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>3</td>
-            <td>100.00%</td>
-        </tr>
-        <tr>
-            <td data-player="mexicano2">MEXICANO 2</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="g">G</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>3</td>
-            <td>100.00%</td>
-        </tr>
-        <tr>
-            <td data-player="lucca">LUCCA</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="p">P</td>
-            <td></td>
-            <td class="g">G</td>
-            <td class="p">P</td>
-            <td>3</td>
-            <td>1</td>
-            <td>0</td>
-            <td>2</td>
-            <td>3</td>
-            <td>33.33%</td>
-        </tr>
-        <tr>
-            <td data-player="peke">PEKE</td>
-            <td></td>
-            <td></td>
-            <td class="e">E</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>33.33%</td>
-        </tr>
-        <tr>
-            <td data-player="giroud">GIROUD</td>
-            <td class="p">P</td>
-            <td class="p">P</td>
-            <td class="e">E</td>
-            <td class="p">P</td>
-            <td class="p">P</td>
-            <td class="p">P</td>
-            <td></td>
-            <td>6</td>
-            <td>0</td>
-            <td>1</td>
-            <td>5</td>
-            <td>1</td>
-            <td>5.56%</td>
-        </tr>
-        <tr>
-            <td data-player="fake">FAKE LEON</td>
-            <td class="p">P</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0.00%</td>
-        </tr>
-        <tr>
-            <td data-player="monti">MONTI</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="p">P</td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0.00%</td>
-        </tr>
-        <tr>
-            <td data-player="santi">SANTI M</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="p">P</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0.00%</td>
-        </tr>
-        <tr>
-            <td data-player="tomy">TOMY A</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="p">P</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0.00%</td>
-        </tr>
-    </tbody>
-</table>
-<!-- Pop-up -->
-<div class="popup-container" id="popup-container">
-    <div class="popup-content">
-        <button class="close-btn" onclick="closePopup()">Cerrar</button>
-        <h3>POSICIONES ACTUALES</h3>
-        <p>LIBERTADORES: Resta - Wendel - Chicha - Sasso - Galsti</p>
-        <p>SUDAMERICANA: Valen - Aniki - Trapa - Fede</p>
-        <p>PROMOCIÓN: Peke</p>
-        <p>DESCENSO: Tomy - Santi - Monti - Fake Leon - Giroud</p>
+    <div class="container">
+        <form id="quizForm">
+            <h1>Preguntas de Opción Múltiple</h1>
+            <div id="questionsContainer"></div>
+            <input type="submit" value="Enviar" class="submit-btn">
+        </form>
+        <div class="result">
+            <p id="resultText"></p>
+        </div>
     </div>
 
-<script>
-    // Función para abrir el pop-up
-    function openPopup() {
-        var popup = document.getElementById("popup-container");
-        popup.style.display = "block";
-    }
+    <script>
+        const questions = [
+            { question: "1. ¿Qué autor es conocido por la metáfora de la 'ecología de los medios' y su concepto de especies y ambientes?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "a" },
+            { question: "2. Según McLuhan, ¿qué es una extensión de nuestros ojos?", answers: ["a) La radio", "b) La televisión", "c) La tecnología", "d) La imprenta"], correct: "b" },
+            { question: "3. ¿Cuál es la característica principal de los medios calientes, según McLuhan?", answers: ["a) Proporcionan poca información y requieren participación del receptor", "b) Dan mucha información y no necesitan interacción del receptor", "c) Son interactivos y bidireccionales", "d) Son obsoletos y no se utilizan actualmente"], correct: "b" },
+            { question: "4. ¿Qué componente de la tétrada de McLuhan habla sobre lo que se vuelve obsoleto debido a los nuevos medios?", answers: ["a) Extensión", "b) Obsolescencia", "c) Recuperación", "d) Reversión"], correct: "b" },
+            { question: "5. ¿Qué advertencia de Postman destaca que las ventajas y desventajas de una nueva tecnología nunca son distribuidas equitativamente entre la población?", answers: ["a) La tecnología es una extensión de nuestro cuerpo", "b) El cambio tecnológico implica un compromiso", "c) Las ventajas y desventajas nunca son equitativas", "d) El cambio tecnológico es ecológico"], correct: "c" },
+            { question: "6. ¿Cuál es el ejemplo que utiliza Scolari para demostrar la recuperación de hábitos antiguos en nuevos medios?", answers: ["a) Telégrafo", "b) E-books", "c) Televisión", "d) Redes sociales"], correct: "d" },
+            { question: "7. ¿Qué concepto de Bauman se refiere a los cambios abruptos en las corporaciones y el trabajo debido a la tecnología?", answers: ["a) Modernidad líquida", "b) Modernidad sólida", "c) Sociedad postmoderna", "d) Aldea global"], correct: "a" },
+            { question: "8. ¿Qué autor menciona la remediación como la transformación de un medio para humanizarse?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Octavio Islas", "d) Carlos Scolari"], correct: "d" },
+            { question: "9. ¿Qué término describe el fenómeno en el que los nuevos medios emergen y generan miedo por parecer un nuevo paradigma?", answers: ["a) Extinción", "b) Evolución", "c) Emergencia", "d) Convergencia"], correct: "c" },
+            { question: "10. ¿Qué concepto de Simon se refiere a la saturación de información y la necesidad de economizar la atención?", answers: ["a) Economía de la información", "b) Economía de la atención", "c) Economía del conocimiento", "d) Economía digital"], correct: "b" },
+            { question: "11. ¿Qué término utiliza Roberto Igarza para describir la democratización del acceso a la información?", answers: ["a) Convergencia", "b) Prosumidor", "c) Democracia informativa", "d) Multitud inteligente"], correct: "c" },
+            { question: "12. ¿Quién es el autor principal detrás del concepto de 'aldea global'?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "a" },
+            { question: "13. Según Postman, ¿qué implica la tendencia a considerar la tecnología como algo divino?", answers: ["a) Ecológico", "b) Mítico", "c) Interactivo", "d) Obsoleto"], correct: "b" },
+            { question: "14. ¿Qué ejemplo da Postman para ilustrar que el cambio tecnológico no es aditivo sino ecológico?", answers: ["a) Telégrafo", "b) Coche", "c) Gotita de tinta en un vaso de agua", "d) Radio"], correct: "c" },
+            { question: "15. ¿Cuál es la característica de los 'medios fríos' según McLuhan?", answers: ["a) Proporcionan mucha información", "b) Requieren participación activa del receptor", "c) No necesitan interacción", "d) Son obsoletos"], correct: "b" },
+            { question: "16. ¿Qué autor introduce el término 'metamedio'?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "c" },
+            { question: "17. ¿Cuál es un ejemplo de un medio que se ha vuelto obsoleto, según Scolari?", answers: ["a) Radio", "b) Telégrafo", "c) Televisión", "d) Internet"], correct: "b" },
+            { question: "18. ¿Qué autor menciona la 'dimensión intermedial' para describir cómo los medios moldean nuestra comprensión del mundo?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "c" },
+            { question: "19. ¿Qué término utiliza Scolari para describir la competencia entre especies de medios?", answers: ["a) Obsolescencia", "b) Convergencia", "c) Ecosistema de medios", "d) Democracia informativa"], correct: "c" },
+            { question: "20. ¿Cuál es el enfoque principal de la 'economía de la atención' según Simon y Goldhaber?", answers: ["a) La producción de contenidos", "b) La manipulación de datos", "c) La saturación de información y la escasez de atención", "d) La democratización de la información"], correct: "c" },
+        ];
 
-    // Función para cerrar el pop-up
-    function closePopup() {
-        var popup = document.getElementById("popup-container");
-        popup.style.display = "none";
-    }
+        const totalQuestions = questions.length;
+        let correctAnswers = 0;
+        let answeredQuestions = 0;
 
-    // Llamada a la función para abrir el pop-up cuando se carga la página
-    window.onload = openPopup;
-</script>
+        const questionsContainer = document.getElementById('questionsContainer');
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+            questionDiv.innerHTML = `<p>${q.question}</p>` + q.answers.map((a, i) => `
+                <label><input type="radio" name="q${index}" value="${String.fromCharCode(97 + i)}"> ${a}</label>
+            `).join('');
+            questionsContainer.appendChild(questionDiv);
+        });
+
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            correctAnswers = 0;
+            answeredQuestions = 0;
+
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                const questionDiv = document.querySelector(`.question:nth-child(${index + 1})`);
+                if (selected) {
+                    answeredQuestions++;
+                    if (selected.value === q.correct) {
+                        correctAnswers++;
+                        questionDiv.classList.add('correct');
+                        questionDiv.classList.remove('incorrect');
+                    } else {
+                        questionDiv.classList.add('incorrect');
+                        questionDiv.classList.remove('correct');
+                    }
+                }
+            });
+
+            const resultText = document.getElementById('resultText');
+            const score = (correctAnswers / totalQuestions) * 100;
+            resultText.innerHTML = `Respondidas: ${answeredQuestions} / ${totalQuestions}<br>Correctas: ${correctAnswers}<br>Incorrectas: ${answeredQuestions - correctAnswers}<br>Resultado: ${score.toFixed(2)}%<br>${score >= 60 ? 'Aprobado' : 'Desaprobado'}`;
+        });
+    </script>
 </body>
 </html>
