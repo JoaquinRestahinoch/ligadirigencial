@@ -3,130 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Convergencias y Paradigmas Tecnológicos</title>
+    <title>Quiz de Convergencias y Paradigmas Tecnológicos</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #50b3a2;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #2980b9 3px solid;
-        }
-        header h1 {
-            margin: 0;
-            text-align: center;
-            padding-bottom: 20px;
-        }
-        form {
-            background: #fff;
             padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        form h1 {
-            margin-bottom: 20px;
+        h1 {
             text-align: center;
             color: #333;
         }
         .question {
-            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .question p {
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 10px;
         }
         .question label {
             display: block;
             margin-bottom: 5px;
             cursor: pointer;
         }
-        .submit-btn {
+        .question.correct {
+            border-color: #4caf50;
+        }
+        .question.incorrect {
+            border-color: #f44336;
+        }
+        .correct-answer {
+            display: none;
+            font-size: 14px;
+            color: #4caf50;
+            margin-top: 5px;
+        }
+        .incorrect-answer {
+            display: none;
+            font-size: 14px;
+            color: #f44336;
+            margin-top: 5px;
+        }
+        .result {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
             display: block;
             width: 100%;
             padding: 10px;
-            background: #50b3a2;
+            background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-        .submit-btn:hover {
-            background: #3a8d84;
-        }
-        .result {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .result p {
             font-size: 18px;
-            font-weight: bold;
+            cursor: pointer;
         }
-        .correct {
-            color: green;
-        }
-        .incorrect {
-            color: red;
-        }
-        .question.correct label {
-            background-color: #d4edda;
-        }
-        .question.incorrect label {
-            background-color: #f8d7da;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Formulario de Convergencias y Paradigmas Tecnológicos</h1>
-    </header>
-
-    <div class="container">
-        <form id="quizForm">
-            <h1>Preguntas de Opción Múltiple</h1>
-            <div id="questionsContainer"></div>
-            <input type="submit" value="Enviar" class="submit-btn">
-        </form>
-        <div class="result">
-            <p id="resultText"></p>
-        </div>
-    </div>
+    <h1>Quiz de Convergencias y Paradigmas Tecnológicos</h1>
+    <form id="quizForm">
+        <div id="questionsContainer"></div>
+        <button type="submit">Enviar Respuestas</button>
+    </form>
+    <div class="result" id="resultText"></div>
 
     <script>
         const questions = [
-            { question: "1. ¿Qué autor es conocido por la metáfora de la 'ecología de los medios' y su concepto de especies y ambientes?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "a" },
-            { question: "2. Según McLuhan, ¿qué es una extensión de nuestros ojos?", answers: ["a) La radio", "b) La televisión", "c) La tecnología", "d) La imprenta"], correct: "b" },
-            { question: "3. ¿Cuál es la característica principal de los medios calientes, según McLuhan?", answers: ["a) Proporcionan poca información y requieren participación del receptor", "b) Dan mucha información y no necesitan interacción del receptor", "c) Son interactivos y bidireccionales", "d) Son obsoletos y no se utilizan actualmente"], correct: "b" },
-            { question: "4. ¿Qué componente de la tétrada de McLuhan habla sobre lo que se vuelve obsoleto debido a los nuevos medios?", answers: ["a) Extensión", "b) Obsolescencia", "c) Recuperación", "d) Reversión"], correct: "b" },
-            { question: "5. ¿Qué advertencia de Postman destaca que las ventajas y desventajas de una nueva tecnología nunca son distribuidas equitativamente entre la población?", answers: ["a) La tecnología es una extensión de nuestro cuerpo", "b) El cambio tecnológico implica un compromiso", "c) Las ventajas y desventajas nunca son equitativas", "d) El cambio tecnológico es ecológico"], correct: "c" },
-            { question: "6. ¿Cuál es el ejemplo que utiliza Scolari para demostrar la recuperación de hábitos antiguos en nuevos medios?", answers: ["a) Telégrafo", "b) E-books", "c) Televisión", "d) Redes sociales"], correct: "d" },
-            { question: "7. ¿Qué concepto de Bauman se refiere a los cambios abruptos en las corporaciones y el trabajo debido a la tecnología?", answers: ["a) Modernidad líquida", "b) Modernidad sólida", "c) Sociedad postmoderna", "d) Aldea global"], correct: "a" },
-            { question: "8. ¿Qué autor menciona la remediación como la transformación de un medio para humanizarse?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Octavio Islas", "d) Carlos Scolari"], correct: "d" },
-            { question: "9. ¿Qué término describe el fenómeno en el que los nuevos medios emergen y generan miedo por parecer un nuevo paradigma?", answers: ["a) Extinción", "b) Evolución", "c) Emergencia", "d) Convergencia"], correct: "c" },
-            { question: "10. ¿Qué concepto de Simon se refiere a la saturación de información y la necesidad de economizar la atención?", answers: ["a) Economía de la información", "b) Economía de la atención", "c) Economía del conocimiento", "d) Economía digital"], correct: "b" },
-            { question: "11. ¿Qué término utiliza Roberto Igarza para describir la democratización del acceso a la información?", answers: ["a) Convergencia", "b) Prosumidor", "c) Democracia informativa", "d) Multitud inteligente"], correct: "c" },
-            { question: "12. ¿Quién es el autor principal detrás del concepto de 'aldea global'?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "a" },
-            { question: "13. Según Postman, ¿qué implica la tendencia a considerar la tecnología como algo divino?", answers: ["a) Ecológico", "b) Mítico", "c) Interactivo", "d) Obsoleto"], correct: "b" },
-            { question: "14. ¿Qué ejemplo da Postman para ilustrar que el cambio tecnológico no es aditivo sino ecológico?", answers: ["a) Telégrafo", "b) Coche", "c) Gotita de tinta en un vaso de agua", "d) Radio"], correct: "c" },
-            { question: "15. ¿Cuál es la característica de los 'medios fríos' según McLuhan?", answers: ["a) Proporcionan mucha información", "b) Requieren participación activa del receptor", "c) No necesitan interacción", "d) Son obsoletos"], correct: "b" },
-            { question: "16. ¿Qué autor introduce el término 'metamedio'?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "c" },
-            { question: "17. ¿Cuál es un ejemplo de un medio que se ha vuelto obsoleto, según Scolari?", answers: ["a) Radio", "b) Telégrafo", "c) Televisión", "d) Internet"], correct: "b" },
-            { question: "18. ¿Qué autor menciona la 'dimensión intermedial' para describir cómo los medios moldean nuestra comprensión del mundo?", answers: ["a) Marshall McLuhan", "b) Neil Postman", "c) Carlos Scolari", "d) Octavio Islas"], correct: "c" },
-            { question: "19. ¿Qué término utiliza Scolari para describir la competencia entre especies de medios?", answers: ["a) Obsolescencia", "b) Convergencia", "c) Ecosistema de medios", "d) Democracia informativa"], correct: "c" },
-            { question: "20. ¿Cuál es el enfoque principal de la 'economía de la atención' según Simon y Goldhaber?", answers: ["a) La producción de contenidos", "b) La manipulación de datos", "c) La saturación de información y la escasez de atención", "d) La democratización de la información"], correct: "c" },
+            { question: "¿Quién fue el primero en identificar el concepto de 'convergencia' en los medios de comunicación?", answers: ["Castells", "De Sola Pool", "Scolari", "Jenkins"], correct: "b" },
+            { question: "Según Jenkins, ¿qué significa 'stickiness'?", answers: ["Contenido que se difunde rápidamente", "Contenido que permanece en la mente del usuario", "Contenido que desaparece rápidamente", "Contenido que se olvida fácilmente"], correct: "b" },
+            { question: "¿Cuál es una característica de la autocomunicación de masas según Castells?", answers: ["Comunicación unidireccional", "Comunicación de uno a muchos", "Comunicación de muchos a muchos", "Comunicación de muchos a uno"], correct: "c" },
+            { question: "¿Qué autor discute la convergencia de modos y la propiedad cruzada?", answers: ["Jenkins", "Manovich", "De Sola Pool", "Castells"], correct: "c" },
+            { question: "¿Qué término usa Jenkins para describir la capacidad de los usuarios de interactuar y crear contenido?", answers: ["Cultura transmedia", "Inteligencia colectiva", "Cultura participativa", "Economía de la atención"], correct: "c" },
+            { question: "¿Cuál es el enfoque principal del texto 'Technology of Freedom' de De Sola Pool?", answers: ["La digitalización de los medios", "La convergencia de modos", "La inteligencia artificial", "La autocomunicación de masas"], correct: "b" },
+            { question: "Según Scolari, ¿qué tipo de ecosistema poseen los medios de comunicación?", answers: ["Sistema lineal", "Sistema jerárquico", "Sistema de convergencia", "Sistema intermedial"], correct: "d" },
+            { question: "¿Qué concepto describe la expansión de un mismo contenido a través de diferentes medios?", answers: ["Multimedia", "Transmedia", "Intermedial", "Convergencia"], correct: "b" },
+            { question: "¿Qué autor propone los 7 principios de la narrativa transmedia?", answers: ["Scolari", "Manovich", "Castells", "Jenkins"], correct: "d" },
+            { question: "¿Qué describe la 'economía de la atención'?", answers: ["La competencia por captar la atención del público", "La distribución equitativa de contenido", "La reducción de contenido informativo", "La convergencia de dispositivos"], correct: "a" },
+            { question: "¿Cuál es una característica de la inteligencia colectiva?", answers: ["Cada persona sabe todo", "No se comparten conocimientos", "Se crea conocimiento compartido a través de la discusión", "Es un concepto estático"], correct: "c" },
+            { question: "¿Qué es la 'autocomunicación de masas' según Castells?", answers: ["Comunicación interpersonal", "Comunicación de uno a muchos", "Comunicación de muchos a muchos a través de internet", "Comunicación unidireccional"], correct: "c" },
+            { question: "Según Jenkins, ¿qué diferencia la 'pegajosidad' de la 'viralidad'?", answers: ["La pegajosidad es efímera, la viralidad perdura", "La pegajosidad es duradera, la viralidad es efímera", "La pegajosidad se olvida, la viralidad se mantiene", "La pegajosidad y la viralidad son lo mismo"], correct: "b" },
+            { question: "¿Qué fenómeno describe la interacción entre tecnología, ciencia y sociedad según Latour?", answers: ["Cultura participativa", "Convergencia de modos", "Tecnociencia", "Inteligencia colectiva"], correct: "c" },
+            { question: "¿Cuál es un ejemplo de convergencia de medios según Jenkins?", answers: ["Uso exclusivo de la televisión", "Integración de cine, televisión, videojuegos e internet", "Separación de medios tradicionales y digitales", "Comunicación unidireccional"], correct: "b" },
+            { question: "¿Qué describe la 'cultura transmedia' según Jenkins?", answers: ["Fusión de contenidos en una sola plataforma", "Expansión de contenido a través de múltiples plataformas", "Restricción de contenido a un solo medio", "Comunicación de uno a muchos"], correct: "b" },
+            { question: "Según De Sola Pool, ¿qué impulsa la convergencia de modos?", answers: ["Evolución cultural", "Progreso científico", "Avances tecnológicos y propiedad cruzada", "Cambios sociales"], correct: "c" },
+            { question: "¿Qué concepto utiliza Scolari para criticar la idea de 'autocomunicación de masas' de Castells?", answers: ["Convergencia mediática", "Comunicación directa", "Comunicación interpersonal", "Comunicación unidireccional"], correct: "b" },
+            { question: "¿Qué es la 'narrativa transmedia' según Jenkins?", answers: ["Expansión de un mismo contenido a múltiples medios", "Reducción de contenido a un solo medio", "Uso exclusivo de medios tradicionales", "Comunicación de uno a muchos"], correct: "a" },
+            { question: "Según Castells, ¿cuál es una de las formas de comunicación que coexisten con la autocomunicación de masas?", answers: ["Comunicación de masas unidireccional", "Comunicación interpersonal", "Comunicación directa", "Comunicación unidireccional"], correct: "b" }
         ];
 
         const totalQuestions = questions.length;
@@ -139,7 +113,7 @@
             questionDiv.classList.add('question');
             questionDiv.innerHTML = `<p>${q.question}</p>` + q.answers.map((a, i) => `
                 <label><input type="radio" name="q${index}" value="${String.fromCharCode(97 + i)}"> ${a}</label>
-            `).join('');
+            `).join('') + `<p class="correct-answer">Respuesta correcta: ${q.answers[q.correct.charCodeAt(0) - 97]}</p>`;
             questionsContainer.appendChild(questionDiv);
         });
 
@@ -151,6 +125,7 @@
             questions.forEach((q, index) => {
                 const selected = document.querySelector(`input[name="q${index}"]:checked`);
                 const questionDiv = document.querySelector(`.question:nth-child(${index + 1})`);
+                const correctAnswerDiv = questionDiv.querySelector('.correct-answer');
                 if (selected) {
                     answeredQuestions++;
                     if (selected.value === q.correct) {
@@ -161,12 +136,15 @@
                         questionDiv.classList.add('incorrect');
                         questionDiv.classList.remove('correct');
                     }
+                    correctAnswerDiv.style.display = 'block';
+                } else {
+                    correctAnswerDiv.style.display = 'none';
                 }
             });
 
             const resultText = document.getElementById('resultText');
             const score = (correctAnswers / totalQuestions) * 100;
-            resultText.innerHTML = `Respondidas: ${answeredQuestions} / ${totalQuestions}<br>Correctas: ${correctAnswers}<br>Incorrectas: ${answeredQuestions - correctAnswers}<br>Resultado: ${score.toFixed(2)}%<br>${score >= 60 ? 'Aprobado' : 'Desaprobado'}`;
+            resultText.textContent = `Respondiste ${answeredQuestions} preguntas y acertaste ${correctAnswers}. Tu puntuación es ${score.toFixed(2)}%.`;
         });
     </script>
 </body>
