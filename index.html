@@ -24,13 +24,38 @@
             max-width: 800px;
         }
         .question {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .question:hover {
+            background-color: #f9f9f9;
         }
         .question p {
             font-weight: bold;
+            margin-bottom: 10px;
         }
         .question input[type="radio"] {
-            margin: 10px 0;
+            margin: 5px 0;
+        }
+        .correct {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .incorrect {
+            background-color: #f44336;
+            color: white;
+        }
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+        .results {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
         }
         .btn-container {
             text-align: center;
@@ -47,26 +72,6 @@
         }
         .btn-container button:hover {
             background: #45a049;
-        }
-        .correct {
-            background-color: #4CAF50;
-            color: white;
-            transition: background-color 0.5s ease;
-        }
-        .incorrect {
-            background-color: #f44336;
-            color: white;
-            transition: background-color 0.5s ease;
-        }
-        .correct-answer {
-            color: green;
-            font-weight: bold;
-            display: none;
-        }
-        .results {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -103,6 +108,7 @@
             <input type="radio" name="question4" value="correct"> Secretaría de Deportes<br>
             <input type="radio" name="question4" value="incorrect"> Ministerio de Salud<br>
             <input type="radio" name="question4" value="incorrect"> Consejo Nacional del Deporte<br>
+            <span class="correct-answer">Respuesta correcta: Secretaría de Deportes</span>
         </div>
         <!-- Pregunta 5 -->
         <div class="question">
@@ -110,6 +116,7 @@
             <input type="radio" name="question5" value="correct"> Tribunal de Disciplina Deportiva<br>
             <input type="radio" name="question5" value="incorrect"> Cámara de Apelaciones<br>
             <input type="radio" name="question5" value="incorrect"> Corte Suprema de Justicia<br>
+            <span class="correct-answer">Respuesta correcta: Tribunal de Disciplina Deportiva</span>
         </div>
         <!-- Pregunta 6 -->
         <div class="question">
@@ -117,6 +124,7 @@
             <input type="radio" name="question6" value="correct"> Ley 20.655<br>
             <input type="radio" name="question6" value="incorrect"> Ley 24.557<br>
             <input type="radio" name="question6" value="incorrect"> Ley 23.737<br>
+            <span class="correct-answer">Respuesta correcta: Ley 20.655</span>
         </div>
         <!-- Pregunta 7 -->
         <div class="question">
@@ -124,6 +132,7 @@
             <input type="radio" name="question7" value="correct"> Inspección General de Justicia<br>
             <input type="radio" name="question7" value="incorrect"> AFIP<br>
             <input type="radio" name="question7" value="incorrect"> INADI<br>
+            <span class="correct-answer">Respuesta correcta: Inspección General de Justicia</span>
         </div>
         <!-- Pregunta 8 -->
         <div class="question">
@@ -131,6 +140,7 @@
             <input type="radio" name="question8" value="correct"> Sanciones deportivas y administrativas<br>
             <input type="radio" name="question8" value="incorrect"> Sanciones penales<br>
             <input type="radio" name="question8" value="incorrect"> Multas económicas<br>
+            <span class="correct-answer">Respuesta correcta: Sanciones deportivas y administrativas</span>
         </div>
         <!-- Pregunta 9 -->
         <div class="question">
@@ -138,6 +148,7 @@
             <input type="radio" name="question9" value="correct"> Coordina la participación de Argentina en los Juegos Olímpicos<br>
             <input type="radio" name="question9" value="incorrect"> Legisla sobre el deporte nacional<br>
             <input type="radio" name="question9" value="incorrect"> Administra los fondos deportivos<br>
+            <span class="correct-answer">Respuesta correcta: Coordina la participación de Argentina en los Juegos Olímpicos</span>
         </div>
         <!-- Pregunta 10 -->
         <div class="question">
@@ -145,41 +156,23 @@
             <input type="radio" name="question10" value="correct"> Proteger la integridad física y moral de los deportistas<br>
             <input type="radio" name="question10" value="incorrect"> Regular los contratos laborales<br>
             <input type="radio" name="question10" value="incorrect"> Establecer normas para la construcción de estadios<br>
+            <span class="correct-answer">Respuesta correcta: Proteger la integridad física y moral de los deportistas</span>
         </div>
         <!-- Pregunta 11 -->
         <div class="question">
             <p>11. ¿Qué aspectos regula el Código de Ética Deportiva?</p>
-            <input type="radio" name="question11" value="correct"> Conducta y fair play en el deporte<br>
-            <input type="radio" name="question11" value="incorrect"> Contratos y transferencias<br>
-            <input type="radio" name="question11" value="incorrect"> Marketing y publicidad<br>
+            <input type="radio" name="question11" value="correct"> Conducta de los deportistas y dirigentes<br>
+            <input type="radio" name="question11" value="incorrect"> Reglamentos de competición<br>
+            <input type="radio" name="question11" value="incorrect"> Contratos deportivos<br>
+            <span class="correct-answer">Respuesta correcta: Conducta de los deportistas y dirigentes</span>
         </div>
         <!-- Pregunta 12 -->
         <div class="question">
-            <p>12. ¿Qué ley establece las bases para la promoción del deporte en Argentina?</p>
-            <input type="radio" name="question12" value="correct"> Ley 27.201<br>
-            <input type="radio" name="question12" value="incorrect"> Ley 26.522<br>
-            <input type="radio" name="question12" value="incorrect"> Ley 25.689<br>
-        </div>
-        <!-- Pregunta 13 -->
-        <div class="question">
-            <p>13. ¿Qué organismo supervisa la implementación de políticas deportivas en Argentina?</p>
-            <input type="radio" name="question13" value="correct"> Secretaría de Deportes<br>
-            <input type="radio" name="question13" value="incorrect"> Ministerio de Educación<br>
-            <input type="radio" name="question13" value="incorrect"> Ministerio de Cultura<br>
-        </div>
-        <!-- Pregunta 14 -->
-        <div class="question">
-            <p>14. ¿Qué ley regula la actividad deportiva federada en Argentina?</p>
-            <input type="radio" name="question14" value="correct"> Ley 20.160<br>
-            <input type="radio" name="question14" value="incorrect"> Ley 22.250<br>
-            <input type="radio" name="question14" value="incorrect"> Ley 23.548<br>
-        </div>
-        <!-- Pregunta 15 -->
-        <div class="question">
-            <p>15. ¿Qué organismo es responsable de la prevención del dopaje en el deporte argentino?</p>
-            <input type="radio" name="question15" value="correct"> Organización Nacional Antidopaje<br>
-            <input type="radio" name="question15" value="incorrect"> Ministerio de Salud<br>
-            <input type="radio" name="question15" value="incorrect"> Tribunal de Disciplina Deportiva<br>
+            <p>12. ¿Qué organismo regula las actividades de fútbol en Argentina?</p>
+            <input type="radio" name="question12" value="correct"> Asociación del Fútbol Argentino<br>
+            <input type="radio" name="question12" value="incorrect"> Federación Argentina de Fútbol<br>
+            <input type="radio" name="question12" value="incorrect"> Liga Profesional de Fútbol<br>
+            <span class="correct-answer">Respuesta correcta: Asociación del Fútbol Argentino</span>
         </div>
 
         <div class="btn-container">
@@ -194,6 +187,7 @@
             const form = document.getElementById('quizForm');
             const questions = form.getElementsByClassName('question');
             let correctCount = 0;
+            let allAnswered = true;
 
             for (let i = 0; i < questions.length; i++) {
                 const radios = questions[i].getElementsByTagName('input');
@@ -227,16 +221,21 @@
                 }
 
                 if (!answered) {
-                    // Si no se respondió la pregunta, se podría agregar lógica adicional aquí
+                    questions[i].style.backgroundColor = '#fdd';
+                    allAnswered = false;
                 }
             }
 
-            // Mostrar resultados
-            const totalQuestions = questions.length;
-            const resultText = `Respondiste correctamente ${correctCount} de ${totalQuestions} preguntas.`;
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.textContent = resultText;
+            // Mostrar resultados si todas las preguntas están respondidas
+            if (allAnswered) {
+                const totalQuestions = questions.length;
+                const resultText = `Respondiste correctamente ${correctCount} de ${totalQuestions} preguntas.`;
+                const resultsContainer = document.getElementById('results');
+                resultsContainer.textContent = resultText;
+            } else {
+                alert('Por favor, responde todas las preguntas antes de enviar.');
+            }
         }
     </script>
 </body>
-</html>     
+</html>
