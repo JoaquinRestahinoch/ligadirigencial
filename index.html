@@ -1,1 +1,242 @@
-CAROLINA CORDOBA HOLA
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Evaluación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .question input[type="radio"] {
+            margin: 10px 0;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-container button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-container button:hover {
+            background: #45a049;
+        }
+        .correct {
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.5s ease;
+        }
+        .incorrect {
+            background-color: #f44336;
+            color: white;
+            transition: background-color 0.5s ease;
+        }
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+        .results {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="quizForm">
+        <!-- Preguntas van aquí -->
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <p>1. ¿Cuál es el sistema normativo especial donde coexisten normas de diverso rango/jerarquía y naturaleza?</p>
+            <input type="radio" name="question1" value="correct"> Ordenamiento Jurídico del Deporte<br>
+            <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Civil<br>
+            <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Penal<br>
+            <span class="correct-answer">Respuesta correcta: Ordenamiento Jurídico del Deporte</span>
+        </div>
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <p>2. ¿Qué establece la Ley Nacional del Deporte en Argentina?</p>
+            <input type="radio" name="question2" value="correct"> Reglas específicas para la actividad deportiva<br>
+            <input type="radio" name="question2" value="incorrect"> Principios generales del derecho civil<br>
+            <input type="radio" name="question2" value="incorrect"> Normas sobre el derecho comercial<br>
+            <span class="correct-answer">Respuesta correcta: Reglas específicas para la actividad deportiva</span>
+        </div>
+        <!-- Pregunta 3 -->
+        <div class="question">
+            <p>3. ¿Cuál es el objetivo principal del ordenamiento jurídico del deporte?</p>
+            <input type="radio" name="question3" value="correct"> Regular la actividad deportiva<br>
+            <input type="radio" name="question3" value="incorrect"> Establecer sanciones penales<br>
+            <input type="radio" name="question3" value="incorrect"> Proteger los derechos civiles<br>
+            <span class="correct-answer">Respuesta correcta: Regular la actividad deportiva</span>
+        </div>
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <p>4. ¿Qué institución es la máxima autoridad del deporte en Argentina?</p>
+            <input type="radio" name="question4" value="correct"> Secretaría de Deportes<br>
+            <input type="radio" name="question4" value="incorrect"> Ministerio de Salud<br>
+            <input type="radio" name="question4" value="incorrect"> Consejo Nacional del Deporte<br>
+        </div>
+        <!-- Pregunta 5 -->
+        <div class="question">
+            <p>5. ¿Qué organismo tiene la facultad de sancionar a los deportistas por violaciones a las normas deportivas?</p>
+            <input type="radio" name="question5" value="correct"> Tribunal de Disciplina Deportiva<br>
+            <input type="radio" name="question5" value="incorrect"> Cámara de Apelaciones<br>
+            <input type="radio" name="question5" value="incorrect"> Corte Suprema de Justicia<br>
+        </div>
+        <!-- Pregunta 6 -->
+        <div class="question">
+            <p>6. ¿Qué ley regula el régimen de clubes y asociaciones deportivas en Argentina?</p>
+            <input type="radio" name="question6" value="correct"> Ley 20.655<br>
+            <input type="radio" name="question6" value="incorrect"> Ley 24.557<br>
+            <input type="radio" name="question6" value="incorrect"> Ley 23.737<br>
+        </div>
+        <!-- Pregunta 7 -->
+        <div class="question">
+            <p>7. ¿Cuál es el organismo encargado de la fiscalización de los clubes deportivos en Argentina?</p>
+            <input type="radio" name="question7" value="correct"> Inspección General de Justicia<br>
+            <input type="radio" name="question7" value="incorrect"> AFIP<br>
+            <input type="radio" name="question7" value="incorrect"> INADI<br>
+        </div>
+        <!-- Pregunta 8 -->
+        <div class="question">
+            <p>8. ¿Qué tipo de sanciones pueden imponerse a los deportistas por dopaje?</p>
+            <input type="radio" name="question8" value="correct"> Sanciones deportivas y administrativas<br>
+            <input type="radio" name="question8" value="incorrect"> Sanciones penales<br>
+            <input type="radio" name="question8" value="incorrect"> Multas económicas<br>
+        </div>
+        <!-- Pregunta 9 -->
+        <div class="question">
+            <p>9. ¿Qué rol cumple el Comité Olímpico Argentino en la regulación deportiva?</p>
+            <input type="radio" name="question9" value="correct"> Coordina la participación de Argentina en los Juegos Olímpicos<br>
+            <input type="radio" name="question9" value="incorrect"> Legisla sobre el deporte nacional<br>
+            <input type="radio" name="question9" value="incorrect"> Administra los fondos deportivos<br>
+        </div>
+        <!-- Pregunta 10 -->
+        <div class="question">
+            <p>10. ¿Cuál es el principal objetivo de la Ley de Protección al Deportista?</p>
+            <input type="radio" name="question10" value="correct"> Proteger la integridad física y moral de los deportistas<br>
+            <input type="radio" name="question10" value="incorrect"> Regular los contratos laborales<br>
+            <input type="radio" name="question10" value="incorrect"> Establecer normas para la construcción de estadios<br>
+        </div>
+        <!-- Pregunta 11 -->
+        <div class="question">
+            <p>11. ¿Qué aspectos regula el Código de Ética Deportiva?</p>
+            <input type="radio" name="question11" value="correct"> Conducta y fair play en el deporte<br>
+            <input type="radio" name="question11" value="incorrect"> Contratos y transferencias<br>
+            <input type="radio" name="question11" value="incorrect"> Marketing y publicidad<br>
+        </div>
+        <!-- Pregunta 12 -->
+        <div class="question">
+            <p>12. ¿Qué ley establece las bases para la promoción del deporte en Argentina?</p>
+            <input type="radio" name="question12" value="correct"> Ley 27.201<br>
+            <input type="radio" name="question12" value="incorrect"> Ley 26.522<br>
+            <input type="radio" name="question12" value="incorrect"> Ley 25.689<br>
+        </div>
+        <!-- Pregunta 13 -->
+        <div class="question">
+            <p>13. ¿Qué organismo supervisa la implementación de políticas deportivas en Argentina?</p>
+            <input type="radio" name="question13" value="correct"> Secretaría de Deportes<br>
+            <input type="radio" name="question13" value="incorrect"> Ministerio de Educación<br>
+            <input type="radio" name="question13" value="incorrect"> Ministerio de Cultura<br>
+        </div>
+        <!-- Pregunta 14 -->
+        <div class="question">
+            <p>14. ¿Qué ley regula la actividad deportiva federada en Argentina?</p>
+            <input type="radio" name="question14" value="correct"> Ley 20.160<br>
+            <input type="radio" name="question14" value="incorrect"> Ley 22.250<br>
+            <input type="radio" name="question14" value="incorrect"> Ley 23.548<br>
+        </div>
+        <!-- Pregunta 15 -->
+        <div class="question">
+            <p>15. ¿Qué organismo es responsable de la prevención del dopaje en el deporte argentino?</p>
+            <input type="radio" name="question15" value="correct"> Organización Nacional Antidopaje<br>
+            <input type="radio" name="question15" value="incorrect"> Ministerio de Salud<br>
+            <input type="radio" name="question15" value="incorrect"> Tribunal de Disciplina Deportiva<br>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" onclick="checkAnswers()">Enviar respuestas</button>
+        </div>
+    </form>
+
+    <div id="results" class="results"></div>
+
+    <script>
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            const questions = form.getElementsByClassName('question');
+            let correctCount = 0;
+
+            for (let i = 0; i < questions.length; i++) {
+                const radios = questions[i].getElementsByTagName('input');
+                let answered = false;
+
+                for (let j = 0; j < radios.length; j++) {
+                    const radio = radios[j];
+
+                    if (radio.checked) {
+                        answered = true;
+
+                        if (radio.value === 'correct') {
+                            questions[i].classList.add('correct');
+                            correctCount++;
+                        } else {
+                            questions[i].classList.add('incorrect');
+                        }
+
+                        const correctAnswerText = questions[i].querySelector('.correct-answer');
+                        if (correctAnswerText) {
+                            correctAnswerText.style.display = 'inline';
+                        }
+
+                        // Deshabilitar radios después de responder
+                        for (let k = 0; k < radios.length; k++) {
+                            radios[k].disabled = true;
+                        }
+
+                        break;
+                    }
+                }
+
+                if (!answered) {
+                    // Si no se respondió la pregunta, se podría agregar lógica adicional aquí
+                }
+            }
+
+            // Mostrar resultados
+            const totalQuestions = questions.length;
+            const resultText = `Respondiste correctamente ${correctCount} de ${totalQuestions} preguntas.`;
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.textContent = resultText;
+        }
+    </script>
+</body>
+</html>     
