@@ -9,21 +9,25 @@
             font-family: Arial, sans-serif;
             background: #f2f2f2;
             color: #333;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
         }
         form {
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            max-width: 800px;
-            width: 100%;
             box-sizing: border-box;
-            overflow: hidden;
         }
         .question {
             margin-bottom: 20px;
@@ -78,111 +82,113 @@
     </style>
 </head>
 <body>
-    <form id="quizForm">
-        <!-- Preguntas van aquí -->
-        <!-- Pregunta 1 -->
-        <div class="question">
-            <p>1. ¿Cuál es el sistema normativo especial donde coexisten normas de diverso rango/jerarquía y naturaleza?</p>
-            <input type="radio" name="question1" value="correct"> Ordenamiento Jurídico del Deporte<br>
-            <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Civil<br>
-            <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Penal<br>
-            <span class="correct-answer">Respuesta correcta: Ordenamiento Jurídico del Deporte</span>
-        </div>
-        <!-- Pregunta 2 -->
-        <div class="question">
-            <p>2. ¿Qué establece la Ley Nacional del Deporte en Argentina?</p>
-            <input type="radio" name="question2" value="correct"> Reglas específicas para la actividad deportiva<br>
-            <input type="radio" name="question2" value="incorrect"> Principios generales del derecho civil<br>
-            <input type="radio" name="question2" value="incorrect"> Normas sobre el derecho comercial<br>
-            <span class="correct-answer">Respuesta correcta: Reglas específicas para la actividad deportiva</span>
-        </div>
-        <!-- Pregunta 3 -->
-        <div class="question">
-            <p>3. ¿Cuál es el objetivo principal del ordenamiento jurídico del deporte?</p>
-            <input type="radio" name="question3" value="correct"> Regular la actividad deportiva<br>
-            <input type="radio" name="question3" value="incorrect"> Establecer sanciones penales<br>
-            <input type="radio" name="question3" value="incorrect"> Proteger los derechos civiles<br>
-            <span class="correct-answer">Respuesta correcta: Regular la actividad deportiva</span>
-        </div>
-        <!-- Pregunta 4 -->
-        <div class="question">
-            <p>4. ¿Qué institución es la máxima autoridad del deporte en Argentina?</p>
-            <input type="radio" name="question4" value="correct"> Secretaría de Deportes<br>
-            <input type="radio" name="question4" value="incorrect"> Ministerio de Salud<br>
-            <input type="radio" name="question4" value="incorrect"> Consejo Nacional del Deporte<br>
-            <span class="correct-answer">Respuesta correcta: Secretaría de Deportes</span>
-        </div>
-        <!-- Pregunta 5 -->
-        <div class="question">
-            <p>5. ¿Qué organismo tiene la facultad de sancionar a los deportistas por violaciones a las normas deportivas?</p>
-            <input type="radio" name="question5" value="correct"> Tribunal de Disciplina Deportiva<br>
-            <input type="radio" name="question5" value="incorrect"> Cámara de Apelaciones<br>
-            <input type="radio" name="question5" value="incorrect"> Corte Suprema de Justicia<br>
-            <span class="correct-answer">Respuesta correcta: Tribunal de Disciplina Deportiva</span>
-        </div>
-        <!-- Pregunta 6 -->
-        <div class="question">
-            <p>6. ¿Qué ley regula el régimen de clubes y asociaciones deportivas en Argentina?</p>
-            <input type="radio" name="question6" value="correct"> Ley 20.655<br>
-            <input type="radio" name="question6" value="incorrect"> Ley 24.557<br>
-            <input type="radio" name="question6" value="incorrect"> Ley 23.737<br>
-            <span class="correct-answer">Respuesta correcta: Ley 20.655</span>
-        </div>
-        <!-- Pregunta 7 -->
-        <div class="question">
-            <p>7. ¿Cuál es el organismo encargado de la fiscalización de los clubes deportivos en Argentina?</p>
-            <input type="radio" name="question7" value="correct"> Inspección General de Justicia<br>
-            <input type="radio" name="question7" value="incorrect"> AFIP<br>
-            <input type="radio" name="question7" value="incorrect"> INADI<br>
-            <span class="correct-answer">Respuesta correcta: Inspección General de Justicia</span>
-        </div>
-        <!-- Pregunta 8 -->
-        <div class="question">
-            <p>8. ¿Qué tipo de sanciones pueden imponerse a los deportistas por dopaje?</p>
-            <input type="radio" name="question8" value="correct"> Sanciones deportivas y administrativas<br>
-            <input type="radio" name="question8" value="incorrect"> Sanciones penales<br>
-            <input type="radio" name="question8" value="incorrect"> Multas económicas<br>
-            <span class="correct-answer">Respuesta correcta: Sanciones deportivas y administrativas</span>
-        </div>
-        <!-- Pregunta 9 -->
-        <div class="question">
-            <p>9. ¿Qué rol cumple el Comité Olímpico Argentino en la regulación deportiva?</p>
-            <input type="radio" name="question9" value="correct"> Coordina la participación de Argentina en los Juegos Olímpicos<br>
-            <input type="radio" name="question9" value="incorrect"> Legisla sobre el deporte nacional<br>
-            <input type="radio" name="question9" value="incorrect"> Administra los fondos deportivos<br>
-            <span class="correct-answer">Respuesta correcta: Coordina la participación de Argentina en los Juegos Olímpicos</span>
-        </div>
-        <!-- Pregunta 10 -->
-        <div class="question">
-            <p>10. ¿Cuál es el principal objetivo de la Ley de Protección al Deportista?</p>
-            <input type="radio" name="question10" value="correct"> Proteger la integridad física y moral de los deportistas<br>
-            <input type="radio" name="question10" value="incorrect"> Regular los contratos laborales<br>
-            <input type="radio" name="question10" value="incorrect"> Establecer normas para la construcción de estadios<br>
-            <span class="correct-answer">Respuesta correcta: Proteger la integridad física y moral de los deportistas</span>
-        </div>
-        <!-- Pregunta 11 -->
-        <div class="question">
-            <p>11. ¿Qué aspectos regula el Código de Ética Deportiva?</p>
-            <input type="radio" name="question11" value="correct"> Conducta de los deportistas y dirigentes<br>
-            <input type="radio" name="question11" value="incorrect"> Reglamentos de competición<br>
-            <input type="radio" name="question11" value="incorrect"> Contratos deportivos<br>
-            <span class="correct-answer">Respuesta correcta: Conducta de los deportistas y dirigentes</span>
-        </div>
-        <!-- Pregunta 12 -->
-        <div class="question">
-            <p>12. ¿Qué organismo regula las actividades de fútbol en Argentina?</p>
-            <input type="radio" name="question12" value="correct"> Asociación del Fútbol Argentino<br>
-            <input type="radio" name="question12" value="incorrect"> Federación Argentina de Fútbol<br>
-            <input type="radio" name="question12" value="incorrect"> Liga Profesional de Fútbol<br>
-            <span class="correct-answer">Respuesta correcta: Asociación del Fútbol Argentino</span>
-        </div>
+    <div class="container">
+        <form id="quizForm">
+            <!-- Preguntas van aquí -->
+            <!-- Pregunta 1 -->
+            <div class="question">
+                <p>1. ¿Cuál es el sistema normativo especial donde coexisten normas de diverso rango/jerarquía y naturaleza?</p>
+                <input type="radio" name="question1" value="correct"> Ordenamiento Jurídico del Deporte<br>
+                <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Civil<br>
+                <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Penal<br>
+                <span class="correct-answer">Respuesta correcta: Ordenamiento Jurídico del Deporte</span>
+            </div>
+            <!-- Pregunta 2 -->
+            <div class="question">
+                <p>2. ¿Qué establece la Ley Nacional del Deporte en Argentina?</p>
+                <input type="radio" name="question2" value="correct"> Reglas específicas para la actividad deportiva<br>
+                <input type="radio" name="question2" value="incorrect"> Principios generales del derecho civil<br>
+                <input type="radio" name="question2" value="incorrect"> Normas sobre el derecho comercial<br>
+                <span class="correct-answer">Respuesta correcta: Reglas específicas para la actividad deportiva</span>
+            </div>
+            <!-- Pregunta 3 -->
+            <div class="question">
+                <p>3. ¿Cuál es el objetivo principal del ordenamiento jurídico del deporte?</p>
+                <input type="radio" name="question3" value="correct"> Regular la actividad deportiva<br>
+                <input type="radio" name="question3" value="incorrect"> Establecer sanciones penales<br>
+                <input type="radio" name="question3" value="incorrect"> Proteger los derechos civiles<br>
+                <span class="correct-answer">Respuesta correcta: Regular la actividad deportiva</span>
+            </div>
+            <!-- Pregunta 4 -->
+            <div class="question">
+                <p>4. ¿Qué institución es la máxima autoridad del deporte en Argentina?</p>
+                <input type="radio" name="question4" value="correct"> Secretaría de Deportes<br>
+                <input type="radio" name="question4" value="incorrect"> Ministerio de Salud<br>
+                <input type="radio" name="question4" value="incorrect"> Consejo Nacional del Deporte<br>
+                <span class="correct-answer">Respuesta correcta: Secretaría de Deportes</span>
+            </div>
+            <!-- Pregunta 5 -->
+            <div class="question">
+                <p>5. ¿Qué organismo tiene la facultad de sancionar a los deportistas por violaciones a las normas deportivas?</p>
+                <input type="radio" name="question5" value="correct"> Tribunal de Disciplina Deportiva<br>
+                <input type="radio" name="question5" value="incorrect"> Cámara de Apelaciones<br>
+                <input type="radio" name="question5" value="incorrect"> Corte Suprema de Justicia<br>
+                <span class="correct-answer">Respuesta correcta: Tribunal de Disciplina Deportiva</span>
+            </div>
+            <!-- Pregunta 6 -->
+            <div class="question">
+                <p>6. ¿Qué ley regula el régimen de clubes y asociaciones deportivas en Argentina?</p>
+                <input type="radio" name="question6" value="correct"> Ley 20.655<br>
+                <input type="radio" name="question6" value="incorrect"> Ley 24.557<br>
+                <input type="radio" name="question6" value="incorrect"> Ley 23.737<br>
+                <span class="correct-answer">Respuesta correcta: Ley 20.655</span>
+            </div>
+            <!-- Pregunta 7 -->
+            <div class="question">
+                <p>7. ¿Cuál es el organismo encargado de la fiscalización de los clubes deportivos en Argentina?</p>
+                <input type="radio" name="question7" value="correct"> Inspección General de Justicia<br>
+                <input type="radio" name="question7" value="incorrect"> AFIP<br>
+                <input type="radio" name="question7" value="incorrect"> INADI<br>
+                <span class="correct-answer">Respuesta correcta: Inspección General de Justicia</span>
+            </div>
+            <!-- Pregunta 8 -->
+            <div class="question">
+                <p>8. ¿Qué tipo de sanciones pueden imponerse a los deportistas por dopaje?</p>
+                <input type="radio" name="question8" value="correct"> Sanciones deportivas y administrativas<br>
+                <input type="radio" name="question8" value="incorrect"> Sanciones penales<br>
+                <input type="radio" name="question8" value="incorrect"> Multas económicas<br>
+                <span class="correct-answer">Respuesta correcta: Sanciones deportivas y administrativas</span>
+            </div>
+            <!-- Pregunta 9 -->
+            <div class="question">
+                <p>9. ¿Qué rol cumple el Comité Olímpico Argentino en la regulación deportiva?</p>
+                <input type="radio" name="question9" value="correct"> Coordina la participación de Argentina en los Juegos Olímpicos<br>
+                <input type="radio" name="question9" value="incorrect"> Legisla sobre el deporte nacional<br>
+                <input type="radio" name="question9" value="incorrect"> Administra los fondos deportivos<br>
+                <span class="correct-answer">Respuesta correcta: Coordina la participación de Argentina en los Juegos Olímpicos</span>
+            </div>
+            <!-- Pregunta 10 -->
+            <div class="question">
+                <p>10. ¿Cuál es el principal objetivo de la Ley de Protección al Deportista?</p>
+                <input type="radio" name="question10" value="correct"> Proteger la integridad física y moral de los deportistas<br>
+                <input type="radio" name="question10" value="incorrect"> Regular los contratos laborales<br>
+                <input type="radio" name="question10" value="incorrect"> Establecer normas para la construcción de estadios<br>
+                <span class="correct-answer">Respuesta correcta: Proteger la integridad física y moral de los deportistas</span>
+            </div>
+            <!-- Pregunta 11 -->
+            <div class="question">
+                <p>11. ¿Qué aspectos regula el Código de Ética Deportiva?</p>
+                <input type="radio" name="question11" value="correct"> Conducta de los deportistas y dirigentes<br>
+                <input type="radio" name="question11" value="incorrect"> Reglamentos de competición<br>
+                <input type="radio" name="question11" value="incorrect"> Contratos deportivos<br>
+                <span class="correct-answer">Respuesta correcta: Conducta de los deportistas y dirigentes</span>
+            </div>
+            <!-- Pregunta 12 -->
+            <div class="question">
+                <p>12. ¿Qué organismo regula las actividades de fútbol en Argentina?</p>
+                <input type="radio" name="question12" value="correct"> Asociación del Fútbol Argentino<br>
+                <input type="radio" name="question12" value="incorrect"> Federación Argentina de Fútbol<br>
+                <input type="radio" name="question12" value="incorrect"> Liga Profesional de Fútbol<br>
+                <span class="correct-answer">Respuesta correcta: Asociación del Fútbol Argentino</span>
+            </div>
 
-        <div class="btn-container">
-            <button type="button" onclick="checkAnswers()">Enviar respuestas</button>
-        </div>
-    </form>
+            <div class="btn-container">
+                <button type="button" onclick="checkAnswers()">Enviar respuestas</button>
+            </div>
+        </form>
 
-    <div id="results" class="results"></div>
+        <div id="results" class="results"></div>
+    </div>
 
     <script>
         function checkAnswers() {
