@@ -3,247 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Evaluación</title>
+    <title>Evaluación Marco Regulatorio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            background-color: #f4f4f9;
             color: #333;
             margin: 0;
             padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
-        .container {
-            width: 100%;
-            max-width: 800px;
-            overflow: hidden;
-        }
-        form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            box-sizing: border-box;
+        h1 {
+            text-align: center;
+            color: #4a90e2;
         }
         .question {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            padding: 15px;
         }
-        .question:hover {
-            background-color: #f9f9f9;
-        }
-        .question p {
+        .feedback {
             font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .question input[type="radio"] {
-            margin: 5px 0;
+            margin-top: 10px;
         }
         .correct {
-            background-color: #4CAF50;
-            color: white;
+            color: green;
         }
         .incorrect {
-            background-color: #f44336;
-            color: white;
+            color: red;
         }
-        .correct-answer {
-            color: green;
-            font-weight: bold;
-            display: none;
-        }
-        .results {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        .btn-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .btn-container button {
-            background: #4CAF50;
-            color: white;
+        #submitBtn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4a90e2;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 8px;
+            color: white;
             font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .btn-container button:hover {
-            background: #45a049;
+        #submitBtn:hover {
+            background-color: #357ABD;
+        }
+        #results {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <form id="quizForm">
-            <!-- Preguntas van aquí -->
-            <!-- Pregunta 1 -->
-            <div class="question">
-                <p>1. ¿Cuál es el sistema normativo especial donde coexisten normas de diverso rango/jerarquía y naturaleza?</p>
-                <input type="radio" name="question1" value="correct"> Ordenamiento Jurídico del Deporte<br>
-                <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Civil<br>
-                <input type="radio" name="question1" value="incorrect"> Ordenamiento Jurídico Penal<br>
-                <span class="correct-answer">Respuesta correcta: Ordenamiento Jurídico del Deporte</span>
-            </div>
-            <!-- Pregunta 2 -->
-            <div class="question">
-                <p>2. ¿Qué establece la Ley Nacional del Deporte en Argentina?</p>
-                <input type="radio" name="question2" value="correct"> Reglas específicas para la actividad deportiva<br>
-                <input type="radio" name="question2" value="incorrect"> Principios generales del derecho civil<br>
-                <input type="radio" name="question2" value="incorrect"> Normas sobre el derecho comercial<br>
-                <span class="correct-answer">Respuesta correcta: Reglas específicas para la actividad deportiva</span>
-            </div>
-            <!-- Pregunta 3 -->
-            <div class="question">
-                <p>3. ¿Cuál es el objetivo principal del ordenamiento jurídico del deporte?</p>
-                <input type="radio" name="question3" value="correct"> Regular la actividad deportiva<br>
-                <input type="radio" name="question3" value="incorrect"> Establecer sanciones penales<br>
-                <input type="radio" name="question3" value="incorrect"> Proteger los derechos civiles<br>
-                <span class="correct-answer">Respuesta correcta: Regular la actividad deportiva</span>
-            </div>
-            <!-- Pregunta 4 -->
-            <div class="question">
-                <p>4. ¿Qué institución es la máxima autoridad del deporte en Argentina?</p>
-                <input type="radio" name="question4" value="correct"> Secretaría de Deportes<br>
-                <input type="radio" name="question4" value="incorrect"> Ministerio de Salud<br>
-                <input type="radio" name="question4" value="incorrect"> Consejo Nacional del Deporte<br>
-                <span class="correct-answer">Respuesta correcta: Secretaría de Deportes</span>
-            </div>
-            <!-- Pregunta 5 -->
-            <div class="question">
-                <p>5. ¿Qué organismo tiene la facultad de sancionar a los deportistas por violaciones a las normas deportivas?</p>
-                <input type="radio" name="question5" value="correct"> Tribunal de Disciplina Deportiva<br>
-                <input type="radio" name="question5" value="incorrect"> Cámara de Apelaciones<br>
-                <input type="radio" name="question5" value="incorrect"> Corte Suprema de Justicia<br>
-                <span class="correct-answer">Respuesta correcta: Tribunal de Disciplina Deportiva</span>
-            </div>
-            <!-- Pregunta 6 -->
-            <div class="question">
-                <p>6. ¿Qué ley regula el régimen de clubes y asociaciones deportivas en Argentina?</p>
-                <input type="radio" name="question6" value="correct"> Ley 20.655<br>
-                <input type="radio" name="question6" value="incorrect"> Ley 24.557<br>
-                <input type="radio" name="question6" value="incorrect"> Ley 23.737<br>
-                <span class="correct-answer">Respuesta correcta: Ley 20.655</span>
-            </div>
-            <!-- Pregunta 7 -->
-            <div class="question">
-                <p>7. ¿Cuál es el organismo encargado de la fiscalización de los clubes deportivos en Argentina?</p>
-                <input type="radio" name="question7" value="correct"> Inspección General de Justicia<br>
-                <input type="radio" name="question7" value="incorrect"> AFIP<br>
-                <input type="radio" name="question7" value="incorrect"> INADI<br>
-                <span class="correct-answer">Respuesta correcta: Inspección General de Justicia</span>
-            </div>
-            <!-- Pregunta 8 -->
-            <div class="question">
-                <p>8. ¿Qué tipo de sanciones pueden imponerse a los deportistas por dopaje?</p>
-                <input type="radio" name="question8" value="correct"> Sanciones deportivas y administrativas<br>
-                <input type="radio" name="question8" value="incorrect"> Sanciones penales<br>
-                <input type="radio" name="question8" value="incorrect"> Multas económicas<br>
-                <span class="correct-answer">Respuesta correcta: Sanciones deportivas y administrativas</span>
-            </div>
-            <!-- Pregunta 9 -->
-            <div class="question">
-                <p>9. ¿Qué rol cumple el Comité Olímpico Argentino en la regulación deportiva?</p>
-                <input type="radio" name="question9" value="correct"> Coordina la participación de Argentina en los Juegos Olímpicos<br>
-                <input type="radio" name="question9" value="incorrect"> Legisla sobre el deporte nacional<br>
-                <input type="radio" name="question9" value="incorrect"> Administra los fondos deportivos<br>
-                <span class="correct-answer">Respuesta correcta: Coordina la participación de Argentina en los Juegos Olímpicos</span>
-            </div>
-            <!-- Pregunta 10 -->
-            <div class="question">
-                <p>10. ¿Cuál es el principal objetivo de la Ley de Protección al Deportista?</p>
-                <input type="radio" name="question10" value="correct"> Proteger la integridad física y moral de los deportistas<br>
-                <input type="radio" name="question10" value="incorrect"> Regular los contratos laborales<br>
-                <input type="radio" name="question10" value="incorrect"> Establecer normas para la construcción de estadios<br>
-                <span class="correct-answer">Respuesta correcta: Proteger la integridad física y moral de los deportistas</span>
-            </div>
-            <!-- Pregunta 11 -->
-            <div class="question">
-                <p>11. ¿Qué aspectos regula el Código de Ética Deportiva?</p>
-                <input type="radio" name="question11" value="correct"> Conducta de los deportistas y dirigentes<br>
-                <input type="radio" name="question11" value="incorrect"> Reglamentos de competición<br>
-                <input type="radio" name="question11" value="incorrect"> Contratos deportivos<br>
-                <span class="correct-answer">Respuesta correcta: Conducta de los deportistas y dirigentes</span>
-            </div>
-            <!-- Pregunta 12 -->
-            <div class="question">
-                <p>12. ¿Qué organismo regula las actividades de fútbol en Argentina?</p>
-                <input type="radio" name="question12" value="correct"> Asociación del Fútbol Argentino<br>
-                <input type="radio" name="question12" value="incorrect"> Federación Argentina de Fútbol<br>
-                <input type="radio" name="question12" value="incorrect"> Liga Profesional de Fútbol<br>
-                <span class="correct-answer">Respuesta correcta: Asociación del Fútbol Argentino</span>
-            </div>
-
-            <div class="btn-container">
-                <button type="button" onclick="checkAnswers()">Enviar respuestas</button>
-            </div>
-        </form>
-
-        <div id="results" class="results"></div>
-    </div>
+    <h1>Evaluación Marco Regulatorio</h1>
+    <form id="quizForm">
+        <!-- Preguntas generadas por JavaScript -->
+        <button id="submitBtn" type="submit">Enviar</button>
+    </form>
+    <div id="results"></div>
 
     <script>
-        function checkAnswers() {
-            const form = document.getElementById('quizForm');
-            const questions = form.getElementsByClassName('question');
-            let correctCount = 0;
-            let allAnswered = true;
+        const questions = [
+            ["¿Qué es el ordenamiento jurídico del deporte?", "Un conjunto de normas internacionales", "Un sistema normativo especial", "Una ley específica para clubes", "Un reglamento de FIFA", "Un sistema normativo especial"],
+            ["¿Qué son las normas de derecho común?", "Normas sancionadas por clubes", "Principios y reglas sancionadas por el Estado", "Normas específicas de cada deporte", "Leyes exclusivas del deporte", "Principios y reglas sancionadas por el Estado"],
+            ["Ejemplo de norma de derecho civil en deporte", "Ley Antidoping", "Derechos de formación", "Regulaciones sobre menores y contratos", "Reglamento de Transferencia de Jugadores", "Regulaciones sobre menores y contratos"],
+            ["¿Qué entidad debe aprobar los estatutos de clubes en Argentina?", "AFA", "FIFA", "La Inspección General de Justicia", "El Comité Olímpico Internacional", "La Inspección General de Justicia"],
+            ["¿Qué son las reglas de juego sin injerencia estatal?", "Normas estatales de competición", "Reglas de juego y competencia deportiva", "Estatutos de las federaciones", "Leyes laborales aplicables al deporte", "Reglas de juego y competencia deportiva"],
+            ["¿Cómo se clasifica el sistema deportivo europeo?", "Basado en franquicias", "Competencia piramidal con justicia deportiva", "Sistema de liga privada", "Enfocado en conveniencia económica", "Competencia piramidal con justicia deportiva"],
+            ["¿Qué caracteriza al sistema norteamericano de deporte?", "Sistema de ascenso por mérito", "Sistema basado en justicia deportiva", "Deporte como espectáculo y franquicias", "Clubes con fuerte identificación local", "Deporte como espectáculo y franquicias"],
+            ["¿Qué organización tiene carácter privado en el sistema norteamericano?", "FIFA", "AFA", "Ligas profesionales", "Federaciones nacionales", "Ligas profesionales"],
+            ["¿Qué principio deben respetar las Ligas Profesionales según FIFA?", "Intereses comerciales", "Autonomía privada", "Valores deportivos sobre intereses comerciales", "Injerencia estatal directa", "Valores deportivos sobre intereses comerciales"],
+            ["¿Cuál es la máxima autoridad en el ámbito nacional en Argentina?", "La LPF", "La FIFA", "El Comité Olímpico Internacional", "La AFA", "La AFA"],
+            ["¿Cuál es la diferencia principal entre el sistema deportivo europeo y el norteamericano?", "Enfoque en el espectáculo", "Sistema piramidal con ascenso y descenso", "Basado en franquicias", "Competencias cerradas", "Sistema piramidal con ascenso y descenso"],
+            ["¿Qué es el fair play financiero?", "Regulación de salarios", "Limitar los ingresos de clubes", "Control de gastos de clubes", "Control de fichajes de jugadores", "Control de gastos de clubes"],
+            ["¿Qué organismo regula el fair play financiero?", "UEFA", "FIFA", "AFA", "COI", "UEFA"],
+            ["¿Qué objetivo tiene el fair play financiero?", "Aumentar ingresos", "Reducir gastos", "Mantener la competitividad", "Evitar el endeudamiento excesivo", "Evitar el endeudamiento excesivo"],
+            ["¿Qué es el TAS?", "Tribunal de Arbitraje Salarial", "Tribunal Administrativo del Deporte", "Tribunal Arbitral del Deporte", "Tribunal de Apelaciones Deportivas", "Tribunal Arbitral del Deporte"],
+            ["¿Dónde se encuentra el TAS?", "Ginebra", "Lausana", "Zurich", "Mónaco", "Lausana"],
+            ["¿Qué es la Lex Sportiva?", "Ley deportiva nacional", "Leyes internacionales del deporte", "Conjunto de normas deportivas internacionales", "Reglas internas de clubes", "Conjunto de normas deportivas internacionales"],
+            ["¿Qué significa el principio de autodeterminación en el deporte?", "Autonomía de las federaciones", "Autonomía de los clubes", "Regulación estatal mínima", "Libertad de los atletas", "Autonomía de las federaciones"],
+            ["¿Qué es la doble instancia en el ámbito deportivo?", "Revisión judicial", "Apelación a una instancia superior", "Decisión interna de federaciones", "Intervención de la justicia ordinaria", "Apelación a una instancia superior"],
+            ["¿Qué son las medidas cautelares en el deporte?", "Decisiones finales", "Medidas temporales", "Sanciones económicas", "Resoluciones arbitrales", "Medidas temporales"],
+            ["¿Qué es la WADA?", "Agencia Mundial de Antidopaje", "Federación Internacional de Atletismo", "Comité Olímpico Internacional", "Asociación de Federaciones Deportivas", "Agencia Mundial de Antidopaje"],
+            ["¿Qué es el CAS?", "Corte de Arbitraje Salarial", "Corte Administrativa del Deporte", "Corte Arbitral del Deporte", "Corte de Apelaciones Deportivas", "Corte Arbitral del Deporte"],
+            ["¿Qué es el Código Mundial Antidopaje?", "Un reglamento nacional", "Un conjunto de normas internacionales", "Un conjunto de principios y reglas", "Una ley nacional", "Un conjunto de normas internacionales"],
+            ["¿Qué organismo sanciona el Código Mundial Antidopaje?", "FIFA", "WADA", "UEFA", "COI", "WADA"],
+            ["¿Qué es la responsabilidad objetiva en antidopaje?", "Responsabilidad del entrenador", "Responsabilidad del club", "Responsabilidad del atleta", "Responsabilidad del médico", "Responsabilidad del atleta"],
+            ["¿Qué es una infracción de dopaje?", "Un positivo en control antidopaje", "Una sanción económica", "Una advertencia", "Una exclusión temporal", "Un positivo en control antidopaje"],
+            ["¿Qué son las sustancias prohibidas?", "Medicamentos recetados", "Sustancias que mejoran el rendimiento", "Suplementos alimenticios", "Vitaminas", "Sustancias que mejoran el rendimiento"],
+            ["¿Qué es el TUE?", "Una autorización para competir", "Una exención por uso terapéutico", "Un permiso especial de la federación", "Una licencia de atleta", "Una exención por uso terapéutico"],
+            ["¿Qué es la ISO 9001?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de calidad"],
+            ["¿Qué es la ISO 14001?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de gestión ambiental"],
+            ["¿Qué es la ISO 45001?", "Una norma de calidad", "Una norma de seguridad y salud ocupacional", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de seguridad y salud ocupacional"],
+            ["¿Qué es la ISO 37001?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma antisoborno", "Una norma antisoborno"],
+            ["¿Qué es el compliance?", "Cumplimiento de la ley", "Cumplimiento de los estatutos", "Cumplimiento de normas internacionales", "Cumplimiento de las reglas internas", "Cumplimiento de la ley"],
+            ["¿Qué es la responsabilidad penal empresarial?", "Responsabilidad de los empleados", "Responsabilidad de los directivos", "Responsabilidad de la empresa por delitos", "Responsabilidad de los socios", "Responsabilidad de la empresa por delitos"],
+            ["¿Qué es un whistleblower?", "Un árbitro", "Un informante", "Un directivo", "Un atleta", "Un informante"],
+            ["¿Qué es el lavado de dinero?", "Una práctica legal", "Una práctica ilícita", "Una práctica regulada", "Una práctica deportiva", "Una práctica ilícita"],
+            ["¿Qué es la financiación del terrorismo?", "Una actividad legal", "Una actividad ilícita", "Una actividad regulada", "Una actividad deportiva", "Una actividad ilícita"],
+            ["¿Qué es la prevención de riesgos laborales?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de seguridad"],
+            ["¿Qué es el riesgo psicosocial?", "Un riesgo físico", "Un riesgo mental", "Un riesgo laboral", "Un riesgo ambiental", "Un riesgo mental"],
+            ["¿Qué es la ergonomía?", "El estudio de la eficiencia en el trabajo", "El estudio de la salud en el trabajo", "El estudio de la seguridad en el trabajo", "El estudio del medio ambiente en el trabajo", "El estudio de la eficiencia en el trabajo"],
+            ["¿Qué es el estrés laboral?", "Una respuesta física", "Una respuesta mental", "Una respuesta emocional", "Todas las anteriores", "Todas las anteriores"],
+            ["¿Qué es el mobbing?", "Acoso escolar", "Acoso laboral", "Acoso deportivo", "Acoso familiar", "Acoso laboral"],
+            ["¿Qué es el burnout?", "Fatiga mental", "Fatiga física", "Fatiga emocional", "Fatiga laboral crónica", "Fatiga laboral crónica"]
+        ];
 
-            for (let i = 0; i < questions.length; i++) {
-                const radios = questions[i].getElementsByTagName('input');
-                let answered = false;
+        const form = document.getElementById('quizForm');
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+        let totalAnswers = 0;
 
-                for (let j = 0; j < radios.length; j++) {
-                    const radio = radios[j];
+        questions.forEach((question, index) => {
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = `
+                <p>${index + 1}. ${question[0]}</p>
+                ${question.slice(1, -1).map((option, i) => `
+                    <label>
+                        <input type="radio" name="question${index}" value="${option}">
+                        ${option}
+                    </label><br>
+                `).join('')}
+                <p id="feedback${index}" class="feedback"></p>
+            `;
+            form.insertBefore(div, form.children[form.children.length - 1]);
+        });
 
-                    if (radio.checked) {
-                        answered = true;
+        form.addEventListener('change', (event) => {
+            if (event.target.tagName === 'INPUT') {
+                const index = parseInt(event.target.name.replace('question', ''));
+                const feedback = document.getElementById(`feedback${index}`);
+                const correctAnswer = questions[index][5];
+                if (event.target.value === correctAnswer) {
+                    feedback.textContent = 'Correcto';
+                    feedback.className = 'correct';
+                } else {
+                    feedback.textContent = 'Incorrecto';
+                    feedback.className = 'incorrect';
+                }
+            }
+        });
 
-                        if (radio.value === 'correct') {
-                            questions[i].classList.add('correct');
-                            correctCount++;
-                        } else {
-                            questions[i].classList.add('incorrect');
-                        }
-
-                        const correctAnswerText = questions[i].querySelector('.correct-answer');
-                        if (correctAnswerText) {
-                            correctAnswerText.style.display = 'inline';
-                        }
-
-                        // Deshabilitar radios después de responder
-                        for (let k = 0; k < radios.length; k++) {
-                            radios[k].disabled = true;
-                        }
-
-                        break;
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            correctAnswers = 0;
+            incorrectAnswers = 0;
+            totalAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedOption = form[`question${index}`].value;
+                if (selectedOption) {
+                    totalAnswers++;
+                    if (selectedOption === question[5]) {
+                        correctAnswers++;
+                    } else {
+                        incorrectAnswers++;
                     }
                 }
-
-                if (!answered) {
-                    questions[i].style.backgroundColor = '#fdd';
-                    allAnswered = false;
-                }
-            }
-
-            // Mostrar resultados si todas las preguntas están respondidas
-            if (allAnswered) {
-                const totalQuestions = questions.length;
-                const resultText = `Respondiste correctamente ${correctCount} de ${totalQuestions} preguntas.`;
-                const resultsContainer = document.getElementById('results');
-                resultsContainer.textContent = resultText;
-            } else {
-                alert('Por favor, responde todas las preguntas antes de enviar.');
-            }
-        }
+            });
+            document.getElementById('results').innerHTML = `
+                <p>Total de preguntas: ${questions.length}</p>
+                <p>Respondidas: ${totalAnswers}</p>
+                <p>Correctas: ${correctAnswers}</p>
+                <p>Incorrectas: ${incorrectAnswers}</p>
+            `;
+        });
     </script>
 </body>
 </html>
