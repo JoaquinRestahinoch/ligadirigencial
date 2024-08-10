@@ -3,173 +3,588 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evaluación Marco Regulatorio</title>
+    <title>Evaluación de Conocimientos - Marco Regulatorio y Políticas del Deporte</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
             background-color: #f4f4f9;
             color: #333;
-            margin: 0;
-            padding: 20px;
         }
-        h1 {
+        header {
+            background-color: #003366;
+            color: #fff;
+            padding: 10px 0;
             text-align: center;
-            color: #4a90e2;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        main {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            flex: 1;
+        }
+        h1, h2 {
+            color: #003366;
         }
         .question {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin: 20px 0;
             padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
         }
-        .feedback {
-            font-weight: bold;
-            margin-top: 10px;
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 5px 0;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .options li:hover {
+            background-color: #f1f1f1;
         }
         .correct {
-            color: green;
+            background-color: #d4edda;
+            color: #155724;
+            transition: background-color 0.3s;
         }
         .incorrect {
-            color: red;
+            background-color: #f8d7da;
+            color: #721c24;
+            transition: background-color 0.3s;
         }
-        #submitBtn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #4a90e2;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        #progress {
+            position: fixed;
+            right: 20px;
+            top: 80px;
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            padding: 20px;
         }
-        #submitBtn:hover {
-            background-color: #357ABD;
+        #progress-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 10px solid #f4f4f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            font-size: 1.5em;
+            color: #003366;
+            position: relative;
+            transition: border-color 0.3s;
         }
-        #results {
-            margin-top: 20px;
+        #progress-circle.correct {
+            border-color: #28a745;
+        }
+        #progress-circle .inner-circle {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #progress-text {
             text-align: center;
-            font-weight: bold;
-            color: #333;
         }
     </style>
 </head>
 <body>
-    <h1>Evaluación Marco Regulatorio</h1>
-    <form id="quizForm">
-        <!-- Preguntas generadas por JavaScript -->
-        <button id="submitBtn" type="submit">Enviar</button>
-    </form>
-    <div id="results"></div>
 
-    <script>
-        const questions = [
-            ["¿Qué es el ordenamiento jurídico del deporte?", "Un conjunto de normas internacionales", "Un sistema normativo especial", "Una ley específica para clubes", "Un reglamento de FIFA", "Un sistema normativo especial"],
-            ["¿Qué son las normas de derecho común?", "Normas sancionadas por clubes", "Principios y reglas sancionadas por el Estado", "Normas específicas de cada deporte", "Leyes exclusivas del deporte", "Principios y reglas sancionadas por el Estado"],
-            ["Ejemplo de norma de derecho civil en deporte", "Ley Antidoping", "Derechos de formación", "Regulaciones sobre menores y contratos", "Reglamento de Transferencia de Jugadores", "Regulaciones sobre menores y contratos"],
-            ["¿Qué entidad debe aprobar los estatutos de clubes en Argentina?", "AFA", "FIFA", "La Inspección General de Justicia", "El Comité Olímpico Internacional", "La Inspección General de Justicia"],
-            ["¿Qué son las reglas de juego sin injerencia estatal?", "Normas estatales de competición", "Reglas de juego y competencia deportiva", "Estatutos de las federaciones", "Leyes laborales aplicables al deporte", "Reglas de juego y competencia deportiva"],
-            ["¿Cómo se clasifica el sistema deportivo europeo?", "Basado en franquicias", "Competencia piramidal con justicia deportiva", "Sistema de liga privada", "Enfocado en conveniencia económica", "Competencia piramidal con justicia deportiva"],
-            ["¿Qué caracteriza al sistema norteamericano de deporte?", "Sistema de ascenso por mérito", "Sistema basado en justicia deportiva", "Deporte como espectáculo y franquicias", "Clubes con fuerte identificación local", "Deporte como espectáculo y franquicias"],
-            ["¿Qué organización tiene carácter privado en el sistema norteamericano?", "FIFA", "AFA", "Ligas profesionales", "Federaciones nacionales", "Ligas profesionales"],
-            ["¿Qué principio deben respetar las Ligas Profesionales según FIFA?", "Intereses comerciales", "Autonomía privada", "Valores deportivos sobre intereses comerciales", "Injerencia estatal directa", "Valores deportivos sobre intereses comerciales"],
-            ["¿Cuál es la máxima autoridad en el ámbito nacional en Argentina?", "La LPF", "La FIFA", "El Comité Olímpico Internacional", "La AFA", "La AFA"],
-            ["¿Cuál es la diferencia principal entre el sistema deportivo europeo y el norteamericano?", "Enfoque en el espectáculo", "Sistema piramidal con ascenso y descenso", "Basado en franquicias", "Competencias cerradas", "Sistema piramidal con ascenso y descenso"],
-            ["¿Qué es el fair play financiero?", "Regulación de salarios", "Limitar los ingresos de clubes", "Control de gastos de clubes", "Control de fichajes de jugadores", "Control de gastos de clubes"],
-            ["¿Qué organismo regula el fair play financiero?", "UEFA", "FIFA", "AFA", "COI", "UEFA"],
-            ["¿Qué objetivo tiene el fair play financiero?", "Aumentar ingresos", "Reducir gastos", "Mantener la competitividad", "Evitar el endeudamiento excesivo", "Evitar el endeudamiento excesivo"],
-            ["¿Qué es el TAS?", "Tribunal de Arbitraje Salarial", "Tribunal Administrativo del Deporte", "Tribunal Arbitral del Deporte", "Tribunal de Apelaciones Deportivas", "Tribunal Arbitral del Deporte"],
-            ["¿Dónde se encuentra el TAS?", "Ginebra", "Lausana", "Zurich", "Mónaco", "Lausana"],
-            ["¿Qué es la Lex Sportiva?", "Ley deportiva nacional", "Leyes internacionales del deporte", "Conjunto de normas deportivas internacionales", "Reglas internas de clubes", "Conjunto de normas deportivas internacionales"],
-            ["¿Qué significa el principio de autodeterminación en el deporte?", "Autonomía de las federaciones", "Autonomía de los clubes", "Regulación estatal mínima", "Libertad de los atletas", "Autonomía de las federaciones"],
-            ["¿Qué es la doble instancia en el ámbito deportivo?", "Revisión judicial", "Apelación a una instancia superior", "Decisión interna de federaciones", "Intervención de la justicia ordinaria", "Apelación a una instancia superior"],
-            ["¿Qué son las medidas cautelares en el deporte?", "Decisiones finales", "Medidas temporales", "Sanciones económicas", "Resoluciones arbitrales", "Medidas temporales"],
-            ["¿Qué es la WADA?", "Agencia Mundial de Antidopaje", "Federación Internacional de Atletismo", "Comité Olímpico Internacional", "Asociación de Federaciones Deportivas", "Agencia Mundial de Antidopaje"],
-            ["¿Qué es el CAS?", "Corte de Arbitraje Salarial", "Corte Administrativa del Deporte", "Corte Arbitral del Deporte", "Corte de Apelaciones Deportivas", "Corte Arbitral del Deporte"],
-            ["¿Qué es el Código Mundial Antidopaje?", "Un reglamento nacional", "Un conjunto de normas internacionales", "Un conjunto de principios y reglas", "Una ley nacional", "Un conjunto de normas internacionales"],
-            ["¿Qué organismo sanciona el Código Mundial Antidopaje?", "FIFA", "WADA", "UEFA", "COI", "WADA"],
-            ["¿Qué es la responsabilidad objetiva en antidopaje?", "Responsabilidad del entrenador", "Responsabilidad del club", "Responsabilidad del atleta", "Responsabilidad del médico", "Responsabilidad del atleta"],
-            ["¿Qué es una infracción de dopaje?", "Un positivo en control antidopaje", "Una sanción económica", "Una advertencia", "Una exclusión temporal", "Un positivo en control antidopaje"],
-            ["¿Qué son las sustancias prohibidas?", "Medicamentos recetados", "Sustancias que mejoran el rendimiento", "Suplementos alimenticios", "Vitaminas", "Sustancias que mejoran el rendimiento"],
-            ["¿Qué es el TUE?", "Una autorización para competir", "Una exención por uso terapéutico", "Un permiso especial de la federación", "Una licencia de atleta", "Una exención por uso terapéutico"],
-            ["¿Qué es la ISO 9001?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de calidad"],
-            ["¿Qué es la ISO 14001?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de gestión ambiental"],
-            ["¿Qué es la ISO 45001?", "Una norma de calidad", "Una norma de seguridad y salud ocupacional", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de seguridad y salud ocupacional"],
-            ["¿Qué es la ISO 37001?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma antisoborno", "Una norma antisoborno"],
-            ["¿Qué es el compliance?", "Cumplimiento de la ley", "Cumplimiento de los estatutos", "Cumplimiento de normas internacionales", "Cumplimiento de las reglas internas", "Cumplimiento de la ley"],
-            ["¿Qué es la responsabilidad penal empresarial?", "Responsabilidad de los empleados", "Responsabilidad de los directivos", "Responsabilidad de la empresa por delitos", "Responsabilidad de los socios", "Responsabilidad de la empresa por delitos"],
-            ["¿Qué es un whistleblower?", "Un árbitro", "Un informante", "Un directivo", "Un atleta", "Un informante"],
-            ["¿Qué es el lavado de dinero?", "Una práctica legal", "Una práctica ilícita", "Una práctica regulada", "Una práctica deportiva", "Una práctica ilícita"],
-            ["¿Qué es la financiación del terrorismo?", "Una actividad legal", "Una actividad ilícita", "Una actividad regulada", "Una actividad deportiva", "Una actividad ilícita"],
-            ["¿Qué es la prevención de riesgos laborales?", "Una norma de calidad", "Una norma de seguridad", "Una norma de gestión ambiental", "Una norma deportiva", "Una norma de seguridad"],
-            ["¿Qué es el riesgo psicosocial?", "Un riesgo físico", "Un riesgo mental", "Un riesgo laboral", "Un riesgo ambiental", "Un riesgo mental"],
-            ["¿Qué es la ergonomía?", "El estudio de la eficiencia en el trabajo", "El estudio de la salud en el trabajo", "El estudio de la seguridad en el trabajo", "El estudio del medio ambiente en el trabajo", "El estudio de la eficiencia en el trabajo"],
-            ["¿Qué es el estrés laboral?", "Una respuesta física", "Una respuesta mental", "Una respuesta emocional", "Todas las anteriores", "Todas las anteriores"],
-            ["¿Qué es el mobbing?", "Acoso escolar", "Acoso laboral", "Acoso deportivo", "Acoso familiar", "Acoso laboral"],
-            ["¿Qué es el burnout?", "Fatiga mental", "Fatiga física", "Fatiga emocional", "Fatiga laboral crónica", "Fatiga laboral crónica"]
-        ];
+<header>
+    <h1>Evaluación de Conocimientos</h1>
+    <p>Marco Regulatorio y Políticas del Deporte</p>
+</header>
 
-        const form = document.getElementById('quizForm');
-        let correctAnswers = 0;
-        let incorrectAnswers = 0;
-        let totalAnswers = 0;
+<main>
+    <h2>Responde las siguientes preguntas:</h2>
+    <div id="questions">
+        <div class="question" data-correct="c">
+            <p>1. ¿Cuál es el objetivo principal del deporte de alto rendimiento?</p>
+            <ul class="options">
+                <li data-answer="a">a) Fomentar la participación social</li>
+                <li data-answer="b">b) Promover la salud y el bienestar</li>
+                <li data-answer="c">c) Alcanzar récords y marcas destacadas</li>
+                <li data-answer="d">d) Educación a través del deporte</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>2. Según la Carta Olímpica, el deporte es un derecho humano. ¿Cuál es uno de los principios que se debe respetar al practicarlo?</p>
+            <ul class="options">
+                <li data-answer="a">a) Competencia sin reglas</li>
+                <li data-answer="b">b) Comprensión mutua y juego limpio</li>
+                <li data-answer="c">c) Exclusión y competencia agresiva</li>
+                <li data-answer="d">d) Fines comerciales</li>
+            </ul>
+        </div>
 
-        questions.forEach((question, index) => {
-            const div = document.createElement('div');
-            div.className = 'question';
-            div.innerHTML = `
-                <p>${index + 1}. ${question[0]}</p>
-                ${question.slice(1, -1).map((option, i) => `
-                    <label>
-                        <input type="radio" name="question${index}" value="${option}">
-                        ${option}
-                    </label><br>
-                `).join('')}
-                <p id="feedback${index}" class="feedback"></p>
-            `;
-            form.insertBefore(div, form.children[form.children.length - 1]);
-        });
+        <div class="question" data-correct="c">
+            <p>3. ¿Cuál es una de las características del derecho deportivo en Argentina?</p>
+            <ul class="options">
+                <li data-answer="a">a) Es una rama del derecho penal</li>
+                <li data-answer="b">b) No tiene normas específicas</li>
+                <li data-answer="c">c) Regula las relaciones en la actividad deportiva</li>
+                <li data-answer="d">d) Se aplica solo a deportes de equipo</li>
+            </ul>
+        </div>
 
-        form.addEventListener('change', (event) => {
-            if (event.target.tagName === 'INPUT') {
-                const index = parseInt(event.target.name.replace('question', ''));
-                const feedback = document.getElementById(`feedback${index}`);
-                const correctAnswer = questions[index][5];
-                if (event.target.value === correctAnswer) {
-                    feedback.textContent = 'Correcto';
-                    feedback.className = 'correct';
-                } else {
-                    feedback.textContent = 'Incorrecto';
-                    feedback.className = 'incorrect';
-                }
-            }
-        });
+        <div class="question" data-correct="b">
+            <p>4. ¿Qué organismo es responsable de la promoción del deporte en Argentina según la Ley 20.655?</p>
+            <ul class="options">
+                <li data-answer="a">a) Ministerio de Educación</li>
+                <li data-answer="b">b) Agencia de Deporte Nacional</li>
+                <li data-answer="c">c) Consejo Nacional de Deportes</li>
+                <li data-answer="d">d) Comité Olímpico Internacional</li>
+            </ul>
+        </div>
 
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            correctAnswers = 0;
-            incorrectAnswers = 0;
-            totalAnswers = 0;
-            questions.forEach((question, index) => {
-                const selectedOption = form[`question${index}`].value;
-                if (selectedOption) {
-                    totalAnswers++;
-                    if (selectedOption === question[5]) {
-                        correctAnswers++;
+        <div class="question" data-correct="c">
+            <p>5. ¿Qué define al deporte profesional según el documento?</p>
+            <ul class="options">
+                <li data-answer="a">a) Es una actividad recreativa</li>
+                <li data-answer="b">b) Se practica solo en clubes</li>
+                <li data-answer="c">c) Los deportistas reciben una compensación económica</li>
+                <li data-answer="d">d) Está dirigido únicamente a niños</li>
+            </ul>
+        </div>
+
+        <!-- Additional questions -->
+        <div class="question" data-correct="c">
+            <p>6. ¿Qué tipo de deporte tiene como objetivo promover la salud y el bienestar?</p>
+            <ul class="options">
+                <li data-answer="a">a) Deporte de rendimiento</li>
+                <li data-answer="b">b) Deporte educativo</li>
+                <li data-answer="c">c) Deporte salud</li>
+                <li data-answer="d">d) Deporte recreativo</li>
+            </ul>
+        </div>
+
+        <div class="question" data-correct="b">
+            <p>7. Según el documento, ¿cuál es una obligación de las federaciones nacionales afiliadas al COA?</p>
+            <ul class="options">
+                <li data-answer="a">a) Participar en actividades comerciales</li>
+                <li data-answer="b">b) Respetar la Carta Olímpica</li>
+                <li data-answer="c">c) Fomentar la competencia agresiva</li>
+                <li data-answer="d">d) Promover el dopaje</li>
+            </ul>
+        </div>
+
+        <div class="question" data-correct="b">
+            <p>8. ¿Cuál es el propósito del "impuesto de lujo" en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Limitar el gasto en marketing</li>
+                <li data-answer="b">b) Promover la igualdad competitiva</li>
+                <li data-answer="c">c) Financiar instalaciones deportivas</li>
+                <li data-answer="d">d) Prohibir los intercambios de jugadores</li>
+            </ul>
+        </div>
+
+        <div class="question" data-correct="b">
+            <p>9. ¿Qué establece el derecho deportivo en cuanto a las reglas del juego?</p>
+            <ul class="options">
+                <li data-answer="a">a) Son determinadas por el Estado</li>
+                <li data-answer="b">b) Son determinadas por asociaciones y federaciones</li>
+                <li data-answer="c">c) No existen reglas fijas</li>
+                <li data-answer="d">d) Las determina cada jugador</li>
+            </ul>
+        </div>
+
+        <div class="question" data-correct="b">
+            <p>10. ¿Qué organismo en Argentina tiene la misión de difundir los principios del movimiento olímpico?</p>
+            <ul class="options">
+                <li data-answer="a">a) Agencia de Deporte Nacional</li>
+                <li data-answer="b">b) Comité Olímpico Argentino</li>
+                <li data-answer="c">c) Ministerio de Educación</li>
+                <li data-answer="d">d) Consejo Nacional del Deporte</li>
+            </ul>
+        </div>
+        <div class="question" data-correct="a">
+            <p>11. ¿Qué implica el concepto de "amateurismo" en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Participación sin recibir compensación económica</li>
+                <li data-answer="b">b) Solo participar en competencias locales</li>
+                <li data-answer="c">c) Ser entrenado por profesionales</li>
+                <li data-answer="d">d) Solo competir internacionalmente</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>12. Según la normativa, ¿cuál es una de las funciones del Ente Nacional de Alto Rendimiento Deportivo (ENARD)?</p>
+            <ul class="options">
+                <li data-answer="a">a) Gestionar eventos deportivos locales</li>
+                <li data-answer="b">b) Proporcionar infraestructura deportiva escolar</li>
+                <li data-answer="c">c) Financiar a los deportistas de elite</li>
+                <li data-answer="d">d) Regular la publicidad deportiva</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="d">
+            <p>13. ¿Qué papel cumple el Tribunal de Arbitraje Deportivo (TAS)?</p>
+            <ul class="options">
+                <li data-answer="a">a) Organiza competiciones deportivas</li>
+                <li data-answer="b">b) Supervisa el entrenamiento de atletas</li>
+                <li data-answer="c">c) Provee fondos para el desarrollo deportivo</li>
+                <li data-answer="d">d) Resuelve disputas legales en el ámbito deportivo</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="a">
+            <p>14. ¿Cuál es la importancia del "fair play" en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Promueve la integridad y el respeto entre competidores</li>
+                <li data-answer="b">b) Aumenta la competitividad agresiva</li>
+                <li data-answer="c">c) Favorece el beneficio económico</li>
+                <li data-answer="d">d) Reduce el tiempo de los eventos deportivos</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="d">
+            <p>15. ¿Qué legislación se aplica en Argentina para combatir el dopaje en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Ley de Infraestructura Deportiva</li>
+                <li data-answer="b">b) Ley de Participación Social en el Deporte</li>
+                <li data-answer="c">c) Ley de Espectáculos Públicos</li>
+                <li data-answer="d">d) Ley Antidopaje</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>16. ¿Cuál es un objetivo del programa "Deporte para Todos"?</p>
+            <ul class="options">
+                <li data-answer="a">a) Apoyar solo a atletas profesionales</li>
+                <li data-answer="b">b) Promover el deporte únicamente en grandes ciudades</li>
+                <li data-answer="c">c) Fomentar el acceso al deporte en todas las comunidades</li>
+                <li data-answer="d">d) Aumentar los ingresos por patrocinio</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>17. ¿Qué es una infracción en términos de derecho deportivo?</p>
+            <ul class="options">
+                <li data-answer="a">a) Un gol en contra</li>
+                <li data-answer="b">b) Violación de las normas establecidas para una competición</li>
+                <li data-answer="c">c) Un acuerdo entre jugadores</li>
+                <li data-answer="d">d) Un acto de buena fe durante el juego</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="a">
+            <p>18. ¿Cuál es la función de las ligas profesionales en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Organizar y regular competiciones deportivas de alto nivel</li>
+                <li data-answer="b">b) Proveer entrenadores para escuelas</li>
+                <li data-answer="c">c) Diseñar equipamiento deportivo</li>
+                <li data-answer="d">d) Patrocinar eventos de caridad</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>19. ¿Qué caracteriza a un contrato deportivo profesional?</p>
+            <ul class="options">
+                <li data-answer="a">a) No tiene consecuencias legales</li>
+                <li data-answer="b">b) Establece derechos y obligaciones entre el deportista y la entidad</li>
+                <li data-answer="c">c) Es solo verbal</li>
+                <li data-answer="d">d) No incluye cláusulas de rendimiento</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>20. ¿Cuál es el rol de la ética en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Incrementar la popularidad del deporte</li>
+                <li data-answer="b">b) Reducir el tiempo de entrenamiento</li>
+                <li data-answer="c">c) Guiar el comportamiento moral de atletas y organizaciones</li>
+                <li data-answer="d">d) Promover el comercio de productos deportivos</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="a">
+            <p>21. ¿Qué es la "Carta Deportiva Nacional" en Argentina?</p>
+            <ul class="options">
+                <li data-answer="a">a) Un conjunto de principios para el desarrollo del deporte</li>
+                <li data-answer="b">b) Una revista mensual sobre deportes</li>
+                <li data-answer="c">c) Un sistema de puntuación para competiciones</li>
+                <li data-answer="d">d) Un código de sanciones para infractores</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>22. ¿Cuál es una consecuencia del dopaje para un atleta?</p>
+            <ul class="options">
+                <li data-answer="a">a) Incremento de salario</li>
+                <li data-answer="b">b) Sanciones y descalificación</li>
+                <li data-answer="c">c) Mejora automática en el rendimiento</li>
+                <li data-answer="d">d) Reconocimiento público</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="d">
+            <p>23. ¿Qué se entiende por "deporte social"?</p>
+            <ul class="options">
+                <li data-answer="a">a) Competencias exclusivas para atletas de élite</li>
+                <li data-answer="b">b) Eventos deportivos televisados</li>
+                <li data-answer="c">c) Deportes de moda</li>
+                <li data-answer="d">d) Actividades físicas que promueven la integración social</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="a">
+            <p>24. ¿Cuál es una función del Comité Olímpico Internacional (COI)?</p>
+            <ul class="options">
+                <li data-answer="a">a) Supervisar la organización de los Juegos Olímpicos</li>
+                <li data-answer="b">b) Establecer reglas para todos los deportes</li>
+                <li data-answer="c">c) Producir equipo deportivo</li>
+                <li data-answer="d">d) Financiación de clubes locales</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>25. ¿Qué representa la llama olímpica?</p>
+            <ul class="options">
+                <li data-answer="a">a) La competitividad en el deporte</li>
+                <li data-answer="b">b) El poder económico del COI</li>
+                <li data-answer="c">c) La paz y la amistad entre los pueblos</li>
+                <li data-answer="d">d) La velocidad y fuerza de los atletas</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="d">
+            <p>26. ¿Qué garantiza la "Ley de Promoción del Deporte" en Argentina?</p>
+            <ul class="options">
+                <li data-answer="a">a) Exenciones fiscales para atletas</li>
+                <li data-answer="b">b) Exclusividad en la transmisión de eventos deportivos</li>
+                <li data-answer="c">c) Participación de solo deportistas profesionales</li>
+                <li data-answer="d">d) Apoyo al desarrollo deportivo en comunidades</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>27. ¿Cuál es una característica del "deporte de base"?</p>
+            <ul class="options">
+                <li data-answer="a">a) Está orientado exclusivamente a la competición internacional</li>
+                <li data-answer="b">b) Enfocado en la iniciación y formación deportiva</li>
+                <li data-answer="c">c) Requiere instalaciones profesionales</li>
+                <li data-answer="d">d) Es solo para adultos</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="a">
+            <p>28. ¿Qué regula la normativa sobre espectáculos deportivos en Argentina?</p>
+            <ul class="options">
+                <li data-answer="a">a) La seguridad en eventos deportivos masivos</li>
+                <li data-answer="b">b) La cantidad de goles en un partido</li>
+                <li data-answer="c">c) La duración de los eventos deportivos</li>
+                <li data-answer="d">d) El precio de las entradas</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>29. ¿Cuál es la responsabilidad de un entrenador según las normas deportivas?</p>
+            <ul class="options">
+                <li data-answer="a">a) Asegurar el patrocinio de los atletas</li>
+                <li data-answer="b">b) Proveer equipo deportivo</li>
+                <li data-answer="c">c) Garantizar el bienestar y desarrollo de los atletas</li>
+                <li data-answer="d">d) Decidir los resultados de las competiciones</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="d">
+            <p>30. ¿Qué es el "juego limpio financiero" en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Uso justo del equipamiento deportivo</li>
+                <li data-answer="b">b) Igualdad de condiciones en los entrenamientos</li>
+                <li data-answer="c">c) Transparencia en la organización de eventos</li>
+                <li data-answer="d">d) Control financiero para evitar gastos excesivos</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="a">
+            <p>31. ¿Cómo influye el deporte en la cohesión social según el documento?</p>
+            <ul class="options">
+                <li data-answer="a">a) Promueve la integración y el sentido de comunidad</li>
+                <li data-answer="b">b) Crea divisiones entre diferentes grupos</li>
+                <li data-answer="c">c) Favorece únicamente a los atletas profesionales</li>
+                <li data-answer="d">d) Se centra en el éxito económico</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>32. ¿Cuál es la importancia del patrocinio en el deporte profesional?</p>
+            <ul class="options">
+                <li data-answer="a">a) Reduce la cantidad de eventos</li>
+                <li data-answer="b">b) Limita el acceso a nuevos atletas</li>
+                <li data-answer="c">c) Proporciona recursos financieros y visibilidad</li>
+                <li data-answer="d">d) Solo beneficia a las ligas mayores</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>33. ¿Qué representa el "principio de autonomía" en el deporte?</p>
+            <ul class="options">
+                <li data-answer="a">a) Control estatal de todas las actividades deportivas</li>
+                <li data-answer="b">b) Independencia de las organizaciones deportivas en su gestión</li>
+                <li data-answer="c">c) Exclusividad de patrocinio para atletas élite</li>
+                <li data-answer="d">d) Solo aplica a deportes individuales</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="d">
+            <p>34. ¿Cuál es una responsabilidad de los atletas en relación al antidopaje?</p>
+            <ul class="options">
+                <li data-answer="a">a) Utilizar suplementos sin revisión médica</li>
+                <li data-answer="b">b) Mantener el dopaje en secreto</li>
+                <li data-answer="c">c) Evitar pruebas antidopaje</li>
+                <li data-answer="d">d) Cumplir con las normas y procedimientos antidopaje</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="a">
+            <p>35. ¿Qué es el "Código Mundial Antidopaje"?</p>
+            <ul class="options">
+                <li data-answer="a">a) Un conjunto de normas para combatir el dopaje a nivel global</li>
+                <li data-answer="b">b) Una guía de entrenamiento para atletas</li>
+                <li data-answer="c">c) Una ley nacional específica para cada país</li>
+                <li data-answer="d">d) Un reglamento solo para deportes de equipo</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>36. ¿Qué es la "Responsabilidad Social Deportiva"?</p>
+            <ul class="options">
+                <li data-answer="a">a) La obligación de los atletas de ganar competencias</li>
+                <li data-answer="b">b) Un programa de entrenamiento para jóvenes talentos</li>
+                <li data-answer="c">c) La contribución del deporte al bienestar social y ambiental</li>
+                <li data-answer="d">d) Un sistema de recompensas para el público asistente</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>37. ¿Cómo se define un "evento deportivo seguro"?</p>
+            <ul class="options">
+                <li data-answer="a">a) Con alta presencia de medios de comunicación</li>
+                <li data-answer="b">b) Con medidas de seguridad para proteger a participantes y espectadores</li>
+                <li data-answer="c">c) Con entradas gratuitas para el público</li>
+                <li data-answer="d">d) Con patrocinio de grandes marcas</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="d">
+            <p>38. ¿Qué establece la "Ley de Infraestructura Deportiva" en Argentina?</p>
+            <ul class="options">
+                <li data-answer="a">a) Financiamiento exclusivo para deportes acuáticos</li>
+                <li data-answer="b">b) Solo inversiones privadas en instalaciones</li>
+                <li data-answer="c">c) Acceso limitado a instalaciones deportivas</li>
+                <li data-answer="d">d) Desarrollo y mantenimiento de instalaciones deportivas públicas</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="c">
+            <p>39. ¿Cuál es un beneficio del deporte en la educación según el documento?</p>
+            <ul class="options">
+                <li data-answer="a">a) Incremento en la carga académica</li>
+                <li data-answer="b">b) Reducción del tiempo dedicado al estudio</li>
+                <li data-answer="c">c) Mejora del rendimiento y disciplina de los estudiantes</li>
+                <li data-answer="d">d) Disminución de la asistencia a clases</li>
+            </ul>
+        </div>
+        
+        <div class="question" data-correct="b">
+            <p>40. ¿Qué rol juegan los clubes deportivos en la promoción del deporte juvenil?</p>
+            <ul class="options">
+                <li data-answer="a">a) Solo entrenan a atletas profesionales</li>
+                <li data-answer="b">b) Proveen un espacio de formación y desarrollo para jóvenes</li>
+                <li data-answer="c">c) Se enfocan exclusivamente en la competición internacional</li>
+                <li data-answer="d">d) Organizadores de eventos de caridad únicamente</li>
+            </ul>
+        </div>
+        
+    </div>
+</main>
+
+<div id="progress">
+    <h3>Progreso del Examen</h3>
+    <div id="progress-circle">
+        <div class="inner-circle" id="inner-circle">0%</div>
+    </div>
+    <div id="progress-text">
+        <p>Preguntas Respondidas: <span id="answered">0</span>/40</p>
+        <p>Correctas: <span id="correct">0</span></p>
+        <p>Incorrectas: <span id="incorrect">0</span></p>
+        <p>Status: <span id="status">En Progreso</span></p>
+    </div>
+</div>
+
+<script>
+    const questions = document.querySelectorAll('.question');
+    let answered = 0;
+    let correct = 0;
+    let incorrect = 0;
+
+    questions.forEach(question => {
+        const options = question.querySelectorAll('.options li');
+        const correctAnswer = question.getAttribute('data-correct');
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                if (!option.classList.contains('correct') && !option.classList.contains('incorrect')) {
+                    answered++;
+                    if (option.getAttribute('data-answer') === correctAnswer) {
+                        correct++;
+                        option.classList.add('correct');
                     } else {
-                        incorrectAnswers++;
+                        incorrect++;
+                        option.classList.add('incorrect');
+                        options.forEach(opt => {
+                            if (opt.getAttribute('data-answer') === correctAnswer) {
+                                opt.classList.add('correct');
+                            }
+                        });
                     }
+                    updateProgress();
                 }
             });
-            document.getElementById('results').innerHTML = `
-                <p>Total de preguntas: ${questions.length}</p>
-                <p>Respondidas: ${totalAnswers}</p>
-                <p>Correctas: ${correctAnswers}</p>
-                <p>Incorrectas: ${incorrectAnswers}</p>
-            `;
         });
-    </script>
+    });
+
+    function updateProgress() {
+        document.getElementById('answered').textContent = answered;
+        document.getElementById('correct').textContent = correct;
+        document.getElementById('incorrect').textContent = incorrect;
+
+        const percentage = Math.round((correct / questions.length) * 100);
+        const progressCircle = document.getElementById('inner-circle');
+        progressCircle.textContent = percentage + '%';
+
+        const circle = document.getElementById('progress-circle');
+        circle.style.borderColor = percentage >= 60 ? '#28a745' : '#dc3545';
+
+        if (answered === questions.length) {
+            document.getElementById('status').textContent = percentage >= 60 ? 'Aprobado' : 'Desaprobado';
+        }
+
+        const rotation = (percentage / 100) * 360;
+        progressCircle.style.transform = `rotate(${rotation}deg)`;
+    }
+</script>
+
 </body>
 </html>
